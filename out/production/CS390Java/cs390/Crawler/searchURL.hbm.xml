@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cs390.Crawler.searchURL" table="searchURL">
+        <meta attribute="class-description">
+            This class contains the searchURL detail.
+        </meta>
+        <id name="URLID" type="int" column="URLID">
+        </id>
+        <property name="URL" column="URL" type="string"/>
+        <property name="Description" column="Description" type="string"/>
+    </class>
+</hibernate-mapping>
