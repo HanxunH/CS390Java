@@ -53,5 +53,6 @@ public class searchURL {
             e.printStackTrace();
             session.getTransaction().rollback();
         }
+        session.close();
     }
 }
