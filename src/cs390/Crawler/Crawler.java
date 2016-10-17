@@ -17,7 +17,6 @@ public class Crawler {
     public String domain;
     public HashMap hm;
     public int maxurls;
-    public SessionFactory sessionFactory;
     public Session session;
     public int currentURLID;
     public void setMaxurls(int maxurls) {
@@ -32,22 +31,25 @@ public class Crawler {
         maxurls = 1000;
         currentURLID = 0;
         insertURL(baseURL);
-        sessionFactory = new Configuration().configure().buildSessionFactory();
-        session = sessionFactory.openSession();
 
     }
 
     public void startCrawlForURL(){
         fetchURL(baseURL);
-        if(urlID<maxurls){
+        session = DBConnectionManager.getSession();
+        while (urlID < maxurls){
             try{
                 session.beginTransaction();
                 searchURL nextURL = (searchURL) session.get(searchURL.class, currentURLID);
+                session.getTransaction().commit();
+                System.out.println(nextURL.getURL());
                 fetchURL(nextURL.getURL());
             }catch(Exception e){
-
+                e.printStackTrace();
+                session.getTransaction().rollback();
             }
         }
+        session.close();
     }
 
     public void insertURL(String url){
@@ -61,7 +63,7 @@ public class Crawler {
         try{
             Document document = Jsoup.connect(url).get();
             String title = document.title();
-            System.out.println("title : " + title);
+            System.out.format("ID: %d title : %s\n",urlID , title);
             temp.setDescription(title);
             temp.save();
             hm.put(url,urlID);
@@ -82,9 +84,12 @@ public class Crawler {
                     return;
                 }
                 // get the value from href attribute
-                String newUrl = connectURL(link.attr("href"),urlScanned);
+                String newUrl = link.absUrl("href");
                 System.out.println("\nlink : " + newUrl);
-                if(checkDomain(newUrl)){
+                System.out.print(checkDomain(newUrl));
+                System.out.println(checkFormat(newUrl));
+
+                if(checkDomain(newUrl)&&checkFormat(newUrl)){
                     insertURL(newUrl);
                 }
             }
@@ -94,23 +99,18 @@ public class Crawler {
         }
     }
 
-    public String connectURL(String target, String base){
-        if(target.length()>7){
-            if(target.substring(0,7).equals("http://") || target.substring(0,8).equals("https://")){
-                return target;
-            }
-        }
-        String rs;
-        if(base.charAt(base.length()-1)=='/'){
-            rs = base+target;
-        }else {
-            rs = base + "/" + target;
-        }
-        return rs;
-    }
 
     public boolean checkDomain(String url){
         return url.toLowerCase().contains(domain.toLowerCase());
+    }
+
+    public boolean checkFormat(String target){
+        if(target.length()>7){
+            if(target.substring(0,7).equals("http://") || target.substring(0,8).equals("https://")){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

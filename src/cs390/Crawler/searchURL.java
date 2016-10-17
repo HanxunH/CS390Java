@@ -41,11 +41,9 @@ public class searchURL {
     }
 
     public void save(){
-        Configuration cfg = new Configuration().configure();
-        SessionFactory factory = cfg.buildSessionFactory();
         Session session = null;
         try {
-            session = factory.openSession();
+            session = DBConnectionManager.getSession();
             session.beginTransaction();
             session.saveOrUpdate(this);
             session.getTransaction().commit();
