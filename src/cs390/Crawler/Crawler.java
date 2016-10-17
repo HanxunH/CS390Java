@@ -7,9 +7,7 @@ import java.util.*;
 import org.hibernate.Session;
 import org.hibernate.*;
 import org.hibernate.query.Query;
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+
 
 /**
  * Created by Curtis on 10/15/16.
@@ -27,17 +25,15 @@ public class Crawler {
     }
 
     public Crawler(String base,String domainString) {
-        urlID = 0;
+        urlID = getUrlIDfromDB();
         baseURL = base;
         domain = domainString;
         maxurls = 1000;
         currentURLID = 0;
         insertURL(baseURL);
-
     }
 
     public void startCrawlForURL(){
-        fetchURL(baseURL);
         session = DBConnectionManager.getSession();
         while (urlID < maxurls){
             try{
@@ -56,13 +52,12 @@ public class Crawler {
 
     public void insertURL(String url){
         searchURL temp = findsearchURLbyURL(url);
-
         if(temp.set){
             try{
                 Document document = Jsoup.connect(url).get();
                 String title = document.title();
-                System.out.format("Update ID: %d title : %s\n",urlID , title);
                 temp.setDescription(title);
+                System.out.format("Update ID: %d title : %s\n",temp.getURLID() , temp.getDescription());
                 temp.save();
             }catch (Exception e)
             {
@@ -70,7 +65,6 @@ public class Crawler {
             }
             return;
         }
-
         temp.setURLID(urlID);
         temp.setURL(url);
         try{
@@ -87,7 +81,6 @@ public class Crawler {
     }
 
     public void fetchURL(String urlScanned) {
-        currentURLID = currentURLID+1;
         try{
             Document document = Jsoup.connect(urlScanned).get();
             Elements links = document.select("a[href]");
@@ -131,7 +124,6 @@ public class Crawler {
         try {
             Query q = session.createQuery("FROM searchURL S WHERE S.URL = :currenturl");
             q.setParameter("currenturl",url);
-
             List<searchURL> results = q.list();
             if(results.size()>0){
                 temp = results.get(0);
@@ -145,6 +137,24 @@ public class Crawler {
         }
         session.close();
         return temp;
+    }
+
+    public int getUrlIDfromDB(){
+        Session session = DBConnectionManager.getSession();
+        int rs = 0;
+        try {
+            Query q = session.createQuery("FROM searchURL");
+
+            List<searchURL> results = q.list();
+            rs = results.size();
+            session.beginTransaction();
+            session.getTransaction().commit();
+        }catch(Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        session.close();
+        return rs;
     }
 
 }

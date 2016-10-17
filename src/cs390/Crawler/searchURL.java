@@ -12,9 +12,29 @@ public class searchURL {
     private String URL;
     private String Description;
     public boolean set;
+
+
     public searchURL() {
         set = false;
     }
+
+    public void save(){
+        Session session = null;
+        try {
+            session = DBConnectionManager.getSession();
+            session.beginTransaction();
+            session.saveOrUpdate(this);
+            session.getTransaction().commit();
+            set = true;
+        }catch(Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        session.close();
+    }
+
+
+
 
     public int getURLID() {
         return URLID;
@@ -40,18 +60,5 @@ public class searchURL {
         Description = description;
     }
 
-    public void save(){
-        Session session = null;
-        try {
-            session = DBConnectionManager.getSession();
-            session.beginTransaction();
-            session.saveOrUpdate(this);
-            session.getTransaction().commit();
-            set = true;
-        }catch(Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-        }
-        session.close();
-    }
+
 }
