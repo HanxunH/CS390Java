@@ -11,9 +11,9 @@ public class searchURL {
     private int URLID;
     private String URL;
     private String Description;
-
+    public boolean set;
     public searchURL() {
-
+        set = false;
     }
 
     public int getURLID() {
@@ -47,6 +47,7 @@ public class searchURL {
             session.beginTransaction();
             session.saveOrUpdate(this);
             session.getTransaction().commit();
+            set = true;
         }catch(Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();

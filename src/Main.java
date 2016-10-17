@@ -11,6 +11,7 @@ public class Main {
 
     public static void main(final String[] args) throws Exception {
         Crawler c = new Crawler("http://cs.purdue.edu","purdue.edu");
+        c.setMaxurls(5000);
         c.startCrawlForURL();
     }
 }

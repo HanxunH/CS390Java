@@ -5,8 +5,12 @@ import org.jsoup.nodes.*;
 import org.jsoup.select.*;
 import java.util.*;
 import org.hibernate.Session;
+import org.hibernate.*;
+import org.hibernate.query.Query;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
 /**
  * Created by Curtis on 10/15/16.
  */
@@ -15,7 +19,6 @@ public class Crawler {
     public String baseURL;
     public Properties props;
     public String domain;
-    public HashMap hm;
     public int maxurls;
     public Session session;
     public int currentURLID;
@@ -26,7 +29,6 @@ public class Crawler {
     public Crawler(String base,String domainString) {
         urlID = 0;
         baseURL = base;
-        hm = new HashMap();
         domain = domainString;
         maxurls = 1000;
         currentURLID = 0;
@@ -53,11 +55,22 @@ public class Crawler {
     }
 
     public void insertURL(String url){
-        if(hm.containsKey(url)){
+        searchURL temp = findsearchURLbyURL(url);
+
+        if(temp.set){
+            try{
+                Document document = Jsoup.connect(url).get();
+                String title = document.title();
+                System.out.format("Update ID: %d title : %s\n",urlID , title);
+                temp.setDescription(title);
+                temp.save();
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
             return;
         }
 
-        searchURL temp = new searchURL();
         temp.setURLID(urlID);
         temp.setURL(url);
         try{
@@ -66,7 +79,6 @@ public class Crawler {
             System.out.format("ID: %d title : %s\n",urlID , title);
             temp.setDescription(title);
             temp.save();
-            hm.put(url,urlID);
             urlID++;
         }catch (Exception e)
         {
@@ -86,8 +98,8 @@ public class Crawler {
                 // get the value from href attribute
                 String newUrl = link.absUrl("href");
                 System.out.println("\nlink : " + newUrl);
-                System.out.print(checkDomain(newUrl));
-                System.out.println(checkFormat(newUrl));
+                //System.out.print(checkDomain(newUrl));
+                //System.out.println(checkFormat(newUrl));
 
                 if(checkDomain(newUrl)&&checkFormat(newUrl)){
                     insertURL(newUrl);
@@ -111,6 +123,28 @@ public class Crawler {
             }
         }
         return false;
+    }
+
+    public searchURL findsearchURLbyURL(String url){
+        Session session = DBConnectionManager.getSession();
+        searchURL temp = new searchURL();
+        try {
+            Query q = session.createQuery("FROM searchURL S WHERE S.URL = :currenturl");
+            q.setParameter("currenturl",url);
+
+            List<searchURL> results = q.list();
+            if(results.size()>0){
+                temp = results.get(0);
+                temp.set = true;
+            }
+            session.beginTransaction();
+            session.getTransaction().commit();
+        }catch(Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        session.close();
+        return temp;
     }
 
 }
