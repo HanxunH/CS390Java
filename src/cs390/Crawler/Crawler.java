@@ -13,13 +13,15 @@ import org.hibernate.query.Query;
  * Created by Curtis on 10/15/16.
  */
 public class Crawler {
-    public int urlID;
-    public String baseURL;
+    private int crawlerID;
+    private int urlID;
+    private String baseURL;
     public Properties props;
-    public String domain;
-    public int maxurls;
-    public Session session;
-    public int currentURLID;
+    private String domain;
+    private int maxurls;
+    private Session session;
+    private int currentURLID;
+
     public void setMaxurls(int maxurls) {
         this.maxurls = maxurls;
     }
@@ -29,7 +31,7 @@ public class Crawler {
         baseURL = base;
         domain = domainString;
         maxurls = 1000;
-        currentURLID = 0;
+        currentURLID = 71;
         insertURL(baseURL);
     }
 
@@ -41,6 +43,7 @@ public class Crawler {
                 searchURL nextURL = (searchURL) session.get(searchURL.class, currentURLID);
                 session.getTransaction().commit();
                 System.out.println(nextURL.getURL());
+                currentURLID++;
                 fetchURL(nextURL.getURL());
             }catch(Exception e){
                 e.printStackTrace();
@@ -55,12 +58,22 @@ public class Crawler {
         if(temp.set){
             try{
                 Document document = Jsoup.connect(url).get();
-                String title = document.title();
-                temp.setDescription(title);
+                try{
+                    String meta_description = document.select("meta[name=description]").get(0).attr("content");
+                    temp.setDescription(meta_description);
+                    if(meta_description.isEmpty()){
+                        String title = document.title();
+                        temp.setDescription(title);
+                    }
+                }catch( Exception e){
+                    String title = document.title();
+                    temp.setDescription(title);
+                    System.out.println("No Meta description");
+                }
+                System.out.println(currentURLID);
                 System.out.format("Update ID: %d title : %s\n",temp.getURLID() , temp.getDescription());
                 temp.save();
-            }catch (Exception e)
-            {
+            }catch (Exception e){
                 e.printStackTrace();
             }
             return;
@@ -69,9 +82,19 @@ public class Crawler {
         temp.setURL(url);
         try{
             Document document = Jsoup.connect(url).get();
-            String title = document.title();
-            System.out.format("ID: %d title : %s\n",urlID , title);
-            temp.setDescription(title);
+            try{
+                String meta_description = document.select("meta[name=description]").get(0).attr("content");
+                temp.setDescription(meta_description);
+                if(meta_description.isEmpty()){
+                    String title = document.title();
+                    temp.setDescription(title);
+                }
+            }catch( Exception e){
+                String title = document.title();
+                temp.setDescription(title);
+                System.out.println("No Meta description");
+                System.out.format("ID: %d title : %s\n",urlID , title);
+            }
             temp.save();
             urlID++;
         }catch (Exception e)
