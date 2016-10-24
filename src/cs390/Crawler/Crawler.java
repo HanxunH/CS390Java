@@ -7,7 +7,7 @@ import java.util.*;
 import org.hibernate.Session;
 import org.hibernate.*;
 import org.hibernate.query.Query;
-
+import java.io.*;
 
 /**
  * Created by Curtis on 10/15/16.
@@ -20,32 +20,33 @@ public class Crawler {
     private String domain;
     private int maxurls;
     private Session session;
-    private int currentURLID;
+    public int currentURLID;
 
     public void setMaxurls(int maxurls) {
         this.maxurls = maxurls;
     }
 
-    public Crawler(String base,String domainString) {
+    public Crawler(String base, String domainString) {
         urlID = getUrlIDfromDB();
         baseURL = base;
         domain = domainString;
         maxurls = 1000;
-        currentURLID = 71;
+        readParam();
         insertURL(baseURL);
     }
 
-    public void startCrawlForURL(){
+    public void startCrawlForURL() {
         session = DBConnectionManager.getSession();
-        while (urlID < maxurls){
-            try{
+        while (urlID < maxurls) {
+            try {
                 session.beginTransaction();
                 searchURL nextURL = (searchURL) session.get(searchURL.class, currentURLID);
                 session.getTransaction().commit();
                 System.out.println(nextURL.getURL());
-                currentURLID++;
                 fetchURL(nextURL.getURL());
-            }catch(Exception e){
+                currentURLID++;
+                saveParam();
+            } catch (Exception e) {
                 e.printStackTrace();
                 session.getTransaction().rollback();
             }
@@ -53,62 +54,49 @@ public class Crawler {
         session.close();
     }
 
-    public void insertURL(String url){
+    public void insertURL(String url) {
+        System.out.format("Current crawling id: %d\n", this.currentURLID);
         searchURL temp = findsearchURLbyURL(url);
-        if(temp.set){
-            try{
-                Document document = Jsoup.connect(url).get();
-                try{
-                    String meta_description = document.select("meta[name=description]").get(0).attr("content");
-                    temp.setDescription(meta_description);
-                    if(meta_description.isEmpty()){
-                        String title = document.title();
-                        temp.setDescription(title);
-                    }
-                }catch( Exception e){
-                    String title = document.title();
-                    temp.setDescription(title);
-                    System.out.println("No Meta description");
-                }
-                System.out.println(currentURLID);
-                System.out.format("Update ID: %d title : %s\n",temp.getURLID() , temp.getDescription());
-                temp.save();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-            return;
-        }
-        temp.setURLID(urlID);
-        temp.setURL(url);
-        try{
+        try {
             Document document = Jsoup.connect(url).get();
-            try{
+            try {
                 String meta_description = document.select("meta[name=description]").get(0).attr("content");
                 temp.setDescription(meta_description);
-                if(meta_description.isEmpty()){
+                if (validateDescription(meta_description)) {
+                    temp.setDescription(meta_description);
+                } else {
                     String title = document.title();
                     temp.setDescription(title);
                 }
-            }catch( Exception e){
+            } catch (Exception e) {
                 String title = document.title();
                 temp.setDescription(title);
                 System.out.println("No Meta description");
-                System.out.format("ID: %d title : %s\n",urlID , title);
             }
-            temp.save();
-            urlID++;
-        }catch (Exception e)
-        {
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        if (!temp.set) {
+            temp.setURLID(urlID);
+            temp.setURL(url);
+            urlID++;
+        }
+        try {
+            System.out.format("ID: %d title : %s\n", temp.getURLID(), temp.getDescription());
+            temp.save();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void fetchURL(String urlScanned) {
-        try{
+        try {
             Document document = Jsoup.connect(urlScanned).get();
             Elements links = document.select("a[href]");
             for (Element link : links) {
-                if(urlID>maxurls){
+                if (urlID > maxurls) {
                     return;
                 }
                 // get the value from href attribute
@@ -117,44 +105,43 @@ public class Crawler {
                 //System.out.print(checkDomain(newUrl));
                 //System.out.println(checkFormat(newUrl));
 
-                if(checkDomain(newUrl)&&checkFormat(newUrl)){
+                if (checkDomain(newUrl) && checkFormat(newUrl)) {
                     insertURL(newUrl);
                 }
             }
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    public boolean checkDomain(String url){
+    public boolean checkDomain(String url) {
         return url.toLowerCase().contains(domain.toLowerCase());
     }
 
-    public boolean checkFormat(String target){
-        if(target.length()>7){
-            if(target.substring(0,7).equals("http://") || target.substring(0,8).equals("https://")){
+    public boolean checkFormat(String target) {
+        if (target.length() > 7) {
+            if (target.substring(0, 7).equals("http://") || target.substring(0, 8).equals("https://")) {
                 return true;
             }
         }
         return false;
     }
 
-    public searchURL findsearchURLbyURL(String url){
+    public searchURL findsearchURLbyURL(String url) {
         Session session = DBConnectionManager.getSession();
         searchURL temp = new searchURL();
         try {
             Query q = session.createQuery("FROM searchURL S WHERE S.URL = :currenturl");
-            q.setParameter("currenturl",url);
+            q.setParameter("currenturl", url);
             List<searchURL> results = q.list();
-            if(results.size()>0){
+            if (results.size() > 0) {
                 temp = results.get(0);
                 temp.set = true;
             }
             session.beginTransaction();
             session.getTransaction().commit();
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
         }
@@ -162,7 +149,7 @@ public class Crawler {
         return temp;
     }
 
-    public int getUrlIDfromDB(){
+    public int getUrlIDfromDB() {
         Session session = DBConnectionManager.getSession();
         int rs = 0;
         try {
@@ -172,7 +159,7 @@ public class Crawler {
             rs = results.size();
             session.beginTransaction();
             session.getTransaction().commit();
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
         }
@@ -180,4 +167,61 @@ public class Crawler {
         return rs;
     }
 
+    public boolean validateDescription(String d) {
+        if (d.equals("") || d.equals("$description.value")) {
+            return false;
+        }
+        if (d.isEmpty() == true) {
+            return false;
+        }
+        return true;
+    }
+
+    public void crawlContent() {
+
+    }
+
+    public void saveParam() {
+        try {
+            Properties props = new Properties();
+            StringBuilder sb = new StringBuilder();
+            sb.append(currentURLID);
+            String str = sb.toString();
+            props.setProperty("currentURLID", str);
+            File f = new File("crawler.properties");
+            OutputStream out = new FileOutputStream(f);
+            props.store(out, "This is an optional header comment string");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void readParam(){
+        Properties props = new Properties();
+        InputStream is = null;
+
+        // First try loading from the current directory
+        try {
+            File f = new File("crawler.properties");
+            is = new FileInputStream( f );
+        }
+        catch ( Exception e ) {
+            is = null;
+            e.printStackTrace();
+        }
+
+        try {
+            if ( is == null ) {
+                // Try loading from classpath
+                is = getClass().getResourceAsStream("crawler.properties");
+            }
+            // Try loading properties from the file (if found)
+            props.load( is );
+        }
+        catch ( Exception e ) {
+            e.printStackTrace();
+        }
+
+        currentURLID = new Integer(props.getProperty("currentURLID", "0"));
+    }
 }

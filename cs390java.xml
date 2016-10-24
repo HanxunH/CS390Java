@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="cs390java" default="all">
+  
+  
+  <property file="cs390java.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="lib/ant-javafx.jar"/>
+      <include name="lib/dt.jar"/>
+      <include name="lib/javafx-mx.jar"/>
+      <include name="lib/jconsole.jar"/>
+      <include name="lib/packager.jar"/>
+      <include name="lib/sa-jdi.jar"/>
+      <include name="lib/tools.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.hibernate_5.2.3-5.2.3.classpath">
+    <pathelement location="${basedir}/lib/antlr-2.7.7.jar"/>
+    <pathelement location="${basedir}/lib/cdi-api-1.1.jar"/>
+    <pathelement location="${basedir}/lib/classmate-1.3.0.jar"/>
+    <pathelement location="${basedir}/lib/dom4j-1.6.1.jar"/>
+    <pathelement location="${basedir}/lib/el-api-2.2.jar"/>
+    <pathelement location="${basedir}/lib/geronimo-jta_1.1_spec-1.1.1.jar"/>
+    <pathelement location="${basedir}/lib/hibernate-commons-annotations-5.0.1.Final.jar"/>
+    <pathelement location="${basedir}/lib/hibernate-core-5.2.3.Final.jar"/>
+    <pathelement location="${basedir}/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+    <pathelement location="${basedir}/lib/jandex-2.0.0.Final.jar"/>
+    <pathelement location="${basedir}/lib/javassist-3.20.0-GA.jar"/>
+    <pathelement location="${basedir}/lib/javax.inject-1.jar"/>
+    <pathelement location="${basedir}/lib/jboss-interceptors-api_1.1_spec-1.0.0.Beta1.jar"/>
+    <pathelement location="${basedir}/lib/jboss-logging-3.3.0.Final.jar"/>
+    <pathelement location="${basedir}/lib/jsr250-api-1.0.jar"/>
+  </path>
+  
+  <path id="library.jsoup-1.8.3.classpath">
+    <pathelement location="${basedir}/lib/jsoup-1.8.3.jar"/>
+  </path>
+  
+  <path id="library.jsoup-1.9.2.classpath">
+    <pathelement location="${basedir}/lib/jsoup-1.9.2.jar"/>
+  </path>
+  
+  <path id="library.mysql-connector-java-5.1.15-bin.classpath">
+    <pathelement location="${basedir}/lib/mysql-connector-java-5.1.15-bin.jar"/>
+  </path>
+  
+  <path id="library.mysql-connector-java-5.1.40-bin.classpath">
+    <pathelement location="${basedir}/lib/mysql-connector-java-5.1.40-bin.jar"/>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+  
+  <path id="library.tomcat_8.5.6.classpath">
+    <pathelement location="/Users/Curtis/Tomcat8/lib/jsp-api.jar"/>
+    <pathelement location="/Users/Curtis/Tomcat8/lib/servlet-api.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module CS390Java -->
+  
+  <dirname property="module.cs390java.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.cs390java" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.cs390java" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.cs390java" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.cs390java" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="cs390java.output.dir" value="${module.cs390java.basedir}/out/production/CS390Java"/>
+  <property name="cs390java.testoutput.dir" value="${module.cs390java.basedir}/out/test/CS390Java"/>
+  
+  <path id="cs390java.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="cs390java.module.production.classpath">
+    <path refid="${module.jdk.classpath.cs390java}"/>
+    <path refid="library.tomcat_8.5.6.classpath"/>
+    <path refid="library.hibernate_5.2.3-5.2.3.classpath"/>
+    <path refid="library.mysql-connector-java-5.1.15-bin.classpath"/>
+    <path refid="library.mysql-connector-java-5.1.40-bin.classpath"/>
+    <path refid="library.jsoup-1.8.3.classpath"/>
+    <path refid="library.jsoup-1.9.2.classpath"/>
+  </path>
+  
+  <path id="cs390java.runtime.production.module.classpath">
+    <pathelement location="${cs390java.output.dir}"/>
+    <path refid="library.hibernate_5.2.3-5.2.3.classpath"/>
+    <path refid="library.mysql-connector-java-5.1.15-bin.classpath"/>
+    <path refid="library.mysql-connector-java-5.1.40-bin.classpath"/>
+    <path refid="library.jsoup-1.8.3.classpath"/>
+    <path refid="library.jsoup-1.9.2.classpath"/>
+  </path>
+  
+  <path id="cs390java.module.classpath">
+    <path refid="${module.jdk.classpath.cs390java}"/>
+    <pathelement location="${cs390java.output.dir}"/>
+    <path refid="library.tomcat_8.5.6.classpath"/>
+    <path refid="library.hibernate_5.2.3-5.2.3.classpath"/>
+    <path refid="library.mysql-connector-java-5.1.15-bin.classpath"/>
+    <path refid="library.mysql-connector-java-5.1.40-bin.classpath"/>
+    <path refid="library.jsoup-1.8.3.classpath"/>
+    <path refid="library.jsoup-1.9.2.classpath"/>
+  </path>
+  
+  <path id="cs390java.runtime.module.classpath">
+    <pathelement location="${cs390java.testoutput.dir}"/>
+    <pathelement location="${cs390java.output.dir}"/>
+    <path refid="library.tomcat_8.5.6.classpath"/>
+    <path refid="library.hibernate_5.2.3-5.2.3.classpath"/>
+    <path refid="library.mysql-connector-java-5.1.15-bin.classpath"/>
+    <path refid="library.mysql-connector-java-5.1.40-bin.classpath"/>
+    <path refid="library.jsoup-1.8.3.classpath"/>
+    <path refid="library.jsoup-1.9.2.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.cs390java">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.cs390java">
+    <patternset refid="excluded.from.module.cs390java"/>
+  </patternset>
+  
+  <path id="cs390java.module.sourcepath">
+    <dirset dir="${module.cs390java.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.cs390java" depends="compile.module.cs390java.production,compile.module.cs390java.tests" description="Compile module CS390Java"/>
+  
+  <target name="compile.module.cs390java.production" depends="register.custom.compilers" description="Compile module CS390Java; production classes">
+    <mkdir dir="${cs390java.output.dir}"/>
+    <javac2 destdir="${cs390java.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.cs390java}/javac">
+      <compilerarg line="${compiler.args.cs390java}"/>
+      <bootclasspath refid="cs390java.module.bootclasspath"/>
+      <classpath refid="cs390java.module.production.classpath"/>
+      <src refid="cs390java.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.cs390java"/>
+    </javac2>
+    
+    <copy todir="${cs390java.output.dir}">
+      <fileset dir="${module.cs390java.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.cs390java.tests" depends="register.custom.compilers,compile.module.cs390java.production" description="compile module CS390Java; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.cs390java" description="cleanup module">
+    <delete dir="${cs390java.output.dir}"/>
+    <delete dir="${cs390java.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.cs390java, clean.artifact.cs390java:war_exploded" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.cs390java" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.cs390java:war_exploded" value="${basedir}/out/artifacts/CS390Java_war_exploded"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="clean.artifact.cs390java:war_exploded" description="clean CS390Java:war exploded artifact output">
+    <delete dir="${artifact.output.cs390java:war_exploded}"/>
+  </target>
+  
+  <target name="artifact.cs390java:war_exploded" depends="init.artifacts, compile.module.cs390java" description="Build &#39;CS390Java:war exploded&#39; artifact">
+    <mkdir dir="${artifact.output.cs390java:war_exploded}"/>
+    <copy todir="${artifact.output.cs390java:war_exploded}">
+      <fileset dir="${basedir}/web"/>
+    </copy>
+    <mkdir dir="${artifact.output.cs390java:war_exploded}/WEB-INF"/>
+    <copy file="${basedir}/web/WEB-INF/web.xml" tofile="${artifact.output.cs390java:war_exploded}/WEB-INF/web.xml"/>
+    <mkdir dir="${artifact.output.cs390java:war_exploded}/WEB-INF"/>
+    <mkdir dir="${artifact.output.cs390java:war_exploded}/WEB-INF/classes"/>
+    <copy todir="${artifact.output.cs390java:war_exploded}/WEB-INF/classes">
+      <fileset dir="${cs390java.output.dir}"/>
+    </copy>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.cs390java:war_exploded" description="Build all artifacts">
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
