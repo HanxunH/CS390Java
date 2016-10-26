@@ -13,14 +13,14 @@ import java.io.*;
  * Created by Curtis on 10/15/16.
  */
 public class Crawler {
-    private int crawlerID;
+    private int currentURLID;
+    private int currentContentID;
     private int urlID;
+
     private String baseURL;
-    public Properties props;
     private String domain;
     private int maxurls;
     private Session session;
-    public int currentURLID;
 
     public void setMaxurls(int maxurls) {
         this.maxurls = maxurls;
@@ -54,6 +54,28 @@ public class Crawler {
         session.close();
     }
 
+    public void crawlContent() {
+        String url_content_body_text = new String();
+        searchURL target = findsearchURLbyID(currentContentID);
+        if(target.set == true) {
+            try {
+                Document document = Jsoup.connect(target.getURL()).get();
+                url_content_body_text = document.text();
+                Scanner scanner = new Scanner(url_content_body_text).useDelimiter("\\s* \\s*");
+                while(scanner.hasNext()){
+                    String temp = scanner.next();
+                    System.out.println(temp);
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+
+
     public void insertURL(String url) {
         System.out.format("Current crawling id: %d\n", this.currentURLID);
         searchURL temp = findsearchURLbyURL(url);
@@ -76,6 +98,7 @@ public class Crawler {
 
         } catch (Exception e) {
             e.printStackTrace();
+            return;
         }
         if (!temp.set) {
             temp.setURLID(urlID);
@@ -132,6 +155,7 @@ public class Crawler {
         Session session = DBConnectionManager.getSession();
         searchURL temp = new searchURL();
         try {
+            session.beginTransaction();
             Query q = session.createQuery("FROM searchURL S WHERE S.URL = :currenturl");
             q.setParameter("currenturl", url);
             List<searchURL> results = q.list();
@@ -139,7 +163,6 @@ public class Crawler {
                 temp = results.get(0);
                 temp.set = true;
             }
-            session.beginTransaction();
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -149,15 +172,26 @@ public class Crawler {
         return temp;
     }
 
+    public searchURL findsearchURLbyID(int id){
+        Session session = DBConnectionManager.getSession();
+        searchURL temp = new searchURL();
+        try {
+            temp =  (searchURL) session.get(searchURL.class, id);
+            temp.set = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return temp;
+    }
+
     public int getUrlIDfromDB() {
         Session session = DBConnectionManager.getSession();
         int rs = 0;
         try {
+            session.beginTransaction();
             Query q = session.createQuery("FROM searchURL");
-
             List<searchURL> results = q.list();
             rs = results.size();
-            session.beginTransaction();
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -177,17 +211,21 @@ public class Crawler {
         return true;
     }
 
-    public void crawlContent() {
-
-    }
 
     public void saveParam() {
         try {
             Properties props = new Properties();
             StringBuilder sb = new StringBuilder();
+
             sb.append(currentURLID);
             String str = sb.toString();
             props.setProperty("currentURLID", str);
+
+            sb = new StringBuilder();
+            sb.append(currentContentID);
+            str = sb.toString();
+            props.setProperty("currentContentID", str);
+
             File f = new File("crawler.properties");
             OutputStream out = new FileOutputStream(f);
             props.store(out, "This is an optional header comment string");
@@ -221,7 +259,7 @@ public class Crawler {
         catch ( Exception e ) {
             e.printStackTrace();
         }
-
+        currentContentID = new Integer(props.getProperty("currentContentID", "0"));
         currentURLID = new Integer(props.getProperty("currentURLID", "0"));
     }
 }

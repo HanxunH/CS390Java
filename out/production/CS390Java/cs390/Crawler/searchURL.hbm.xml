@@ -11,6 +11,6 @@
         <id name="URLID" type="int" column="URLID"/>
         <property name="URL" column="URL" type="string"/>
         <property name="Description" column="Description" type="string"/>
-
     </class>
+
 </hibernate-mapping>

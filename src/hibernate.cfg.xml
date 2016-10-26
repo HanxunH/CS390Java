@@ -30,6 +30,6 @@
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
         <mapping resource="cs390/Crawler/searchURL.hbm.xml"/>
-
+        <mapping resource="cs390/Crawler/searchResult.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
