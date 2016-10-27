@@ -1,12 +1,30 @@
 package cs390.Crawler;
 
+import org.hibernate.Session;
+
 /**
  * Created by Curtis on 10/24/16.
  */
 public class searchResult {
     private int searchResultID;
-    private int URLID;
     private String word;
+    private searchURL sURL;
+    private int count;
+
+    public void save(){
+        Session session = null;
+        try {
+            session = DBConnectionManager.getSession();
+            session.beginTransaction();
+            session.saveOrUpdate(this);
+            session.getTransaction().commit();
+        }catch(Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        session.close();
+    }
+
 
 
     public int getSearchResultID() {
@@ -17,13 +35,6 @@ public class searchResult {
         this.searchResultID = searchResultID;
     }
 
-    public int getURLID() {
-        return URLID;
-    }
-
-    public void setURLID(int URLID) {
-        this.URLID = URLID;
-    }
 
     public String getWord() {
         return word;
@@ -31,5 +42,21 @@ public class searchResult {
 
     public void setWord(String word) {
         this.word = word;
+    }
+
+    public searchURL getsURL() {
+        return sURL;
+    }
+
+    public void setsURL(searchURL sURL) {
+        this.sURL = sURL;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }

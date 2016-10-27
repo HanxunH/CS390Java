@@ -45,7 +45,7 @@ public class Crawler {
                 System.out.println(nextURL.getURL());
                 fetchURL(nextURL.getURL());
                 currentURLID++;
-                saveParam();
+                saveParam(currentURLID,"currentURLID");
             } catch (Exception e) {
                 e.printStackTrace();
                 session.getTransaction().rollback();
@@ -212,19 +212,14 @@ public class Crawler {
     }
 
 
-    public void saveParam() {
+    public void saveParam(int target, String id) {
         try {
             Properties props = new Properties();
             StringBuilder sb = new StringBuilder();
 
-            sb.append(currentURLID);
+            sb.append(target);
             String str = sb.toString();
-            props.setProperty("currentURLID", str);
-
-            sb = new StringBuilder();
-            sb.append(currentContentID);
-            str = sb.toString();
-            props.setProperty("currentContentID", str);
+            props.setProperty("id", str);
 
             File f = new File("crawler.properties");
             OutputStream out = new FileOutputStream(f);
