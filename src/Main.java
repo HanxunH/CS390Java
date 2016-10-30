@@ -1,7 +1,3 @@
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import cs390.Crawler.*;
 
 /**
@@ -11,7 +7,7 @@ public class Main {
     public static Crawler c;
     public static void main(final String[] args) throws Exception {
         c = new Crawler("http://cs.purdue.edu","purdue.edu");
-        c.setMaxurls(10000);
+        c.setMaxurls(15000);
 
         crawlerRunnable myRunnable = new crawlerRunnable(c);
         Thread t = new Thread(myRunnable);

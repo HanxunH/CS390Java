@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cs390.Crawler.searchResultWord" table="searchResultWord">
+        <meta attribute="class-description">
+            This class contains the searchResultWord detail.
+        </meta>
+        <id name="wordID" type="int" column="wordID">
+            <generator class="native"/>
+        </id>>
+        <property name="word" column="Word" type="string"/>
+        <property name="count" column="Count" type="string"/>
+
+    </class>
+</hibernate-mapping>

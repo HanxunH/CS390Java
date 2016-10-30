@@ -216,11 +216,9 @@ public class Crawler {
         try {
             Properties props = new Properties();
             StringBuilder sb = new StringBuilder();
-
             sb.append(target);
             String str = sb.toString();
-            props.setProperty("id", str);
-
+            props.setProperty(id, str);
             File f = new File("crawler.properties");
             OutputStream out = new FileOutputStream(f);
             props.store(out, "This is an optional header comment string");

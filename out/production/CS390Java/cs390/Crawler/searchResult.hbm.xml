@@ -9,8 +9,6 @@
         This class contains the searchResult detail.
     </meta>
     <id name="searchResultID" type="int" column="searchResultID"/>
-    <property name="word" column="word" type="string"/>
-    <many-to-one name="sURL" column="URLID"
-                 class="cs390.Crawler.searchURL" not-null="true"/>
+
 </class>
 </hibernate-mapping>
