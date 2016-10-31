@@ -14,7 +14,7 @@ public class crawlerRunnable implements Runnable  {
         if(mode==0){
             c.startCrawlForURL();
         }else if(mode == 1){
-            c.crawlContent();
+            c.startCrawlForContent();
         }
     }
 

@@ -42,5 +42,9 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="CS390Java" level="project" />
+    <orderEntry type="library" name="log4j-core-2.7" level="project" />
+    <orderEntry type="library" name="log4j-api-2.7" level="project" />
+    <orderEntry type="library" name="log4j-1.2.17" level="project" />
+    <orderEntry type="library" name="slf4j-log4j12-1.7.21" level="project" />
   </component>
 </module>

@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.*;
 import org.hibernate.query.Query;
 import java.io.*;
+import org.apache.log4j.Logger;
 
 /**
  * Created by Curtis on 10/15/16.
@@ -21,6 +22,7 @@ public class Crawler {
     private String domain;
     private int maxurls;
     private Session session;
+    final static Logger logger = Logger.getLogger(Crawler.class);
 
     public void setMaxurls(int maxurls) {
         this.maxurls = maxurls;
@@ -42,7 +44,10 @@ public class Crawler {
                 session.beginTransaction();
                 searchURL nextURL = (searchURL) session.get(searchURL.class, currentURLID);
                 session.getTransaction().commit();
-                System.out.println(nextURL.getURL());
+                if(logger.isInfoEnabled()){
+                    logger.info("Current Crawling ID: " + this.currentURLID);
+                    logger.info("Crawler for URL: " + nextURL.getURL());
+                }
                 fetchURL(nextURL.getURL());
                 currentURLID++;
                 saveParam(currentURLID,"currentURLID");
@@ -57,18 +62,47 @@ public class Crawler {
 
 
     public void startCrawlForContent() {
-
+        while(currentContentID < getUrlIDfromDB()){
+            crawlContent();
+            currentContentID++;
+            saveParam(currentContentID,"currentContentID");
+        }
     }
 
 
-
-
-
-
-
-
     public void crawlContent() {
-
+        String url_content_body_text;
+        searchURL target = findsearchURLbyID(currentContentID);
+        searchResult target_rs = new searchResult();
+        target_rs.setURLID(target.getURLID());
+        target_rs.setUrl(target.getURL());
+        Map hm_result = new HashMap<String,Integer>();;
+        if(target.set == true) {
+            try {
+                Document document = Jsoup.connect(target.getURL()).get();
+                url_content_body_text = document.text();
+                url_content_body_text = url_content_body_text.toLowerCase();
+                String[] words = url_content_body_text.split("\\s+");
+                Scanner scanner = new Scanner(url_content_body_text).useDelimiter("\\s* \\s*");
+                target_rs.setContent(url_content_body_text);
+                while(scanner.hasNext()){
+                    String temp = scanner.next();
+                    temp.toLowerCase();
+                    if(hm_result.containsKey(temp)){
+                        hm_result.put(temp,(int)hm_result.get(temp)+1);
+                    }else{
+                        hm_result.put(temp,1);
+                    }
+                }
+                target_rs.setHm_result(hm_result);
+                target_rs.save();
+                if(logger.isInfoEnabled()){
+                    logger.info("Content saved for URLID: "+ target_rs.getURLID() +" URL: " + target_rs.getUrl());
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
 
     }
 
@@ -96,7 +130,9 @@ public class Crawler {
             }
         }catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Not Saved");
+            if(logger.isInfoEnabled()){
+                logger.info("Exception during insert URL: " + temp.getURL());
+            }
             return;
         }
 
@@ -106,10 +142,9 @@ public class Crawler {
             urlID++;
         }
         try {
-            System.out.format("Current crawling id: %d\n", this.currentURLID);
-            System.out.format("Saving ID: %d title : %s\n", temp.getURLID(), temp.getDescription());
-            System.out.format("%s\n", temp.getURL());
-            System.out.println();
+            if(logger.isInfoEnabled()){
+                logger.info("Save URLID: " + temp.getURLID() + " Saved URL: " + temp.getURL());
+            }
             searchResult rs = new searchResult();
             temp.save();
         } catch (Exception e) {
@@ -215,12 +250,16 @@ public class Crawler {
         try {
             Properties props = new Properties();
             StringBuilder sb = new StringBuilder();
+            File f = new File("crawler.properties");
+            InputStream is = new FileInputStream( f );
+            OutputStream out = new FileOutputStream(f);
+            props.load(is);
             sb.append(target);
             String str = sb.toString();
             props.setProperty(id, str);
-            File f = new File("crawler.properties");
-            OutputStream out = new FileOutputStream(f);
             props.store(out, "This is an optional header comment string");
+            out.close();
+            is.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

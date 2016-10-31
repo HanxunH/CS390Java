@@ -8,7 +8,7 @@
         </meta>
         <id name="URLID" type="int" column="urlid"></id>
         <property name="URL" column="url" type="string"/>
-        <property name="Description" column="description" type="string"/>
+        <property name="Description" column="description" type="text"/>
 
     </class>
 
@@ -19,18 +19,13 @@
         </meta>
         <id name="URLID" type="int" column="urlid">
         </id>
-        <map name="hm_result" cascade="all">
-            <key column="word"/>
-            <index column="count" type="int"/>
-            <one-to-many class="cs390.Crawler.searchResultWord"/>
+        <property name="url" column="url" type="string"/>
+        <property name="content" column="content" type="text"/>
+        <map name="hm_result" table="search_result_word" cascade="all">
+            <key column="urlid"/>
+            <map-key type="text" column="word"/>
+            <element type="java.lang.Integer" column="count"/>
         </map>
     </class>
 
-    <class name="cs390.Crawler.searchResultWord" table="search_result_word">
-        <meta attribute="class-description">
-            This class contains the searchURL detail.
-        </meta>
-        <id name="word" type="java.lang.String" column="WordID">
-        </id>
-    </class>
 </hibernate-mapping>
