@@ -1,69 +1,31 @@
 package cs390.Crawler;
 
-import org.hibernate.Session;
-
 import java.util.HashMap;
 
 /**
- * Created by Curtis on 10/24/16.
+ * Created by Curtis on 10/30/16.
  */
 public class searchResult {
-    private int searchResultID;
-    private searchURL sURL;
-    private int count;
-    private HashMap<String,Integer> result_hash_map;
+    private int URLID;
+    private HashMap<String,Integer> hm_result;
 
-    public void save(){
-        Session session = null;
-        try {
-            session = DBConnectionManager.getSession();
-            session.beginTransaction();
-            session.saveOrUpdate(this);
-            session.getTransaction().commit();
-        }catch(Exception e) {
-            e.printStackTrace();
-            session.getTransaction().rollback();
-        }
-        session.close();
+    public searchResult() {
+        hm_result = new HashMap<String,Integer>();
     }
 
-    public void addResult(String rs){
-        if(result_hash_map.containsKey(rs)){
-            result_hash_map.put(rs,result_hash_map.get(rs)+1);
-        }else{
-            result_hash_map.put(rs,1);
-        }
+    public int getURLID() {
+        return URLID;
     }
 
-    public HashMap<String, Integer> getResult_hash_map() {
-        return result_hash_map;
+    public void setURLID(int URLID) {
+        this.URLID = URLID;
     }
 
-    public void setResult_hash_map(HashMap<String, Integer> result_hash_map) {
-        this.result_hash_map = result_hash_map;
+    public HashMap<String, Integer> getHm_result() {
+        return hm_result;
     }
 
-    public int getSearchResultID() {
-        return searchResultID;
-    }
-
-    public void setSearchResultID(int searchResultID) {
-        this.searchResultID = searchResultID;
-    }
-
-    public searchURL getsURL() {
-        return sURL;
-    }
-
-    public void setsURL(searchURL sURL) {
-        this.sURL = sURL;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
+    public void setHm_result(HashMap<String, Integer> hm_result) {
+        this.hm_result = hm_result;
     }
 }

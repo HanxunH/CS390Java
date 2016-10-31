@@ -54,22 +54,22 @@ public class Crawler {
         session.close();
     }
 
+
+
+    public void startCrawlForContent() {
+
+    }
+
+
+
+
+
+
+
+
     public void crawlContent() {
-        String url_content_body_text = new String();
-        searchURL target = findsearchURLbyID(currentContentID);
-        if(target.set == true) {
-            try {
-                Document document = Jsoup.connect(target.getURL()).get();
-                url_content_body_text = document.text();
-                Scanner scanner = new Scanner(url_content_body_text).useDelimiter("\\s* \\s*");
-                while(scanner.hasNext()){
-                    String temp = scanner.next();
-                    System.out.println(temp);
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
+
+
     }
 
 
@@ -77,7 +77,6 @@ public class Crawler {
 
 
     public void insertURL(String url) {
-        System.out.format("Current crawling id: %d\n", this.currentURLID);
         searchURL temp = findsearchURLbyURL(url);
         try {
             Document document = Jsoup.connect(url).get();
@@ -93,20 +92,25 @@ public class Crawler {
             } catch (Exception e) {
                 String title = document.title();
                 temp.setDescription(title);
-                System.out.println("No Meta description");
+                //System.out.println("No Meta description");
             }
-
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Not Saved");
             return;
         }
+
         if (!temp.set) {
             temp.setURLID(urlID);
             temp.setURL(url);
             urlID++;
         }
         try {
-            System.out.format("ID: %d title : %s\n", temp.getURLID(), temp.getDescription());
+            System.out.format("Current crawling id: %d\n", this.currentURLID);
+            System.out.format("Saving ID: %d title : %s\n", temp.getURLID(), temp.getDescription());
+            System.out.format("%s\n", temp.getURL());
+            System.out.println();
+            searchResult rs = new searchResult();
             temp.save();
         } catch (Exception e) {
             e.printStackTrace();
@@ -122,12 +126,7 @@ public class Crawler {
                 if (urlID > maxurls) {
                     return;
                 }
-                // get the value from href attribute
                 String newUrl = link.absUrl("href");
-                System.out.println("\nlink : " + newUrl);
-                //System.out.print(checkDomain(newUrl));
-                //System.out.println(checkFormat(newUrl));
-
                 if (checkDomain(newUrl) && checkFormat(newUrl)) {
                     insertURL(newUrl);
                 }

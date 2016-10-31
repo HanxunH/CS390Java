@@ -24,14 +24,11 @@
         <property name="connection.password">
             CS390Java
         </property>
+        <property name="show_sql">false</property>
 
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
-        <mapping resource="cs390/Crawler/searchURL.hbm.xml"/>
-        <mapping resource="cs390/Crawler/searchResult.hbm.xml"/>
-        <mapping resource="cs390/Crawler/searchResultWord.hbm.xml"/>
+        <mapping resource="cs390/Crawler/SearchURL.hbm.xml" />
 
     </session-factory>
 </hibernate-configuration>

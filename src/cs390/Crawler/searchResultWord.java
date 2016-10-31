@@ -1,34 +1,25 @@
 package cs390.Crawler;
 
 /**
- * Created by LemonBear on 10/29/16.
+ * Created by Curtis on 10/30/16.
  */
 public class searchResultWord {
-	private int wordID;
-	private String word;
-	private int	count;
+    private String word;
+    private int count;
 
-	public int getWordID() {
-		return wordID;
-	}
+    public String getWord() {
+        return word;
+    }
 
-	public void setWordID(int wordID) {
-		this.wordID = wordID;
-	}
+    public void setWord(String word) {
+        this.word = word;
+    }
 
-	public String getWord() {
-		return word;
-	}
+    public int getCount() {
+        return count;
+    }
 
-	public void setWord(String word) {
-		this.word = word;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
+    public void setCount(int count) {
+        this.count = count;
+    }
 }

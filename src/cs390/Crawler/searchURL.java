@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 /**
  * Created by Curtis on 10/16/16.
  */
-public class searchURL {
+public class searchURL implements java.io.Serializable{
     private int URLID;
     private String URL;
     private String Description;
@@ -59,6 +59,5 @@ public class searchURL {
     public void setDescription(String description) {
         Description = description;
     }
-
 
 }

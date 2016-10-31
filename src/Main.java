@@ -10,7 +10,10 @@ public class Main {
         c.setMaxurls(15000);
 
         crawlerRunnable myRunnable = new crawlerRunnable(c);
+        myRunnable.setMode(0);
         Thread t = new Thread(myRunnable);
         t.start();
+
+
     }
 }
