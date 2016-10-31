@@ -248,23 +248,20 @@ public class Crawler {
 
     public void saveParam(int target, String id) {
         try {
+            FileInputStream in = new FileInputStream("crawler.properties");
             Properties props = new Properties();
-            StringBuilder sb = new StringBuilder();
-            File f = new File("crawler.properties");
-            InputStream is = new FileInputStream( f );
-            OutputStream out = new FileOutputStream(f);
-            props.load(is);
-            sb.append(target);
-            String str = sb.toString();
-            props.setProperty(id, str);
-            props.store(out, "This is an optional header comment string");
+            props.load(in);
+            in.close();
+
+            FileOutputStream out = new FileOutputStream("crawler.properties");
+            props.setProperty(id, Integer.toString(target));
+            props.store(out, null);
             out.close();
-            is.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     public void readParam(){
         Properties props = new Properties();
         InputStream is = null;

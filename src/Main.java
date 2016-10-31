@@ -9,12 +9,12 @@ public class Main {
         c = new Crawler("http://cs.purdue.edu","purdue.edu");
         c.setMaxurls(15000);
         crawlerRunnable myRunnable = new crawlerRunnable(c);
-        myRunnable.setMode(1);
+        myRunnable.setMode(0);
         Thread t = new Thread(myRunnable);
         t.start();
 
         crawlerRunnable myRunnable2 = new crawlerRunnable(c);
-        myRunnable2.setMode(0);
+        myRunnable2.setMode(1);
         Thread t2 = new Thread(myRunnable2);
         t2.start();
 
