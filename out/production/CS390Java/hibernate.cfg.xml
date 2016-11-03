@@ -14,7 +14,7 @@
         </property>
 
         <property name="connection.url">
-            jdbc:mysql://198.199.113.36:3306/CS390JavaTesting?useSSL=false
+            jdbc:mysql://198.199.113.36:3306/CS390Java?useSSL=false
         </property>
 
         <property name="connection.username">

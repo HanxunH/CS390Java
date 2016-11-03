@@ -14,6 +14,7 @@ public class searchResult {
     private String url;
     private Map hm_result;
     private String content;
+    public boolean set;
     public void save(){
         Session session = null;
         try {
@@ -29,6 +30,7 @@ public class searchResult {
     }
 
     public searchResult() {
+        set = false;
         hm_result = new HashMap<String,Integer>();
     }
 

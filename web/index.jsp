@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.io.*"%>
 
 <!DOCTYPE HTML>
 <!--
@@ -17,7 +16,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 <html>
 <head>
-  <title>Eventually by HTML5 UP</title>
+  <title>CS390 Search Engine</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <!--[if lte IE 8]><script src="HTML-Resource/html5up-eventually/assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -30,14 +29,14 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <!-- Header -->
 <header id="header">
   <h1>CS390 Java Search Engine</h1>
-  <p>A simple template for telling the world when you'll launch<br />
-    your next big thing. Brought to you by <a href="http://html5up.net">HTML5 UP</a>.</p>
+  <p>HTML5UP tamplate <br />
+     <a href="http://html5up.net">HTML5 UP</a>.</p>
 </header>
 
 <!-- Signup Form -->
 <form id="signup-form" method="post" action="#">
-  <input type="email" name="email" id="email" placeholder="Email Address" />
-  <input type="submit" value="Sign Up" />
+  <input type="email" name="email" id="email" placeholder="" />
+  <input type="submit" value="Search" />
 </form>
 
 <!-- Footer -->
@@ -54,7 +53,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 </footer>
 
 <!-- Scripts -->
-<!--[if lte IE 8]><script src="HTML-Resource/html5up-eventually/assets/js/ie/respond.min.js"></script><![endif]-->
+<!--[if lte IE 8]><script src="/HTML-Resource/html5up-eventually/assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="HTML-Resource/html5up-eventually/assets/js/main.js"></script>
 
 </body>

@@ -1,4 +1,5 @@
 package cs390.Crawler;
+import org.apache.log4j.varia.NullAppender;
 import org.jsoup.*;
 import org.jsoup.helper.*;
 import org.jsoup.nodes.*;
@@ -43,7 +44,6 @@ public class Crawler {
             try {
                 session.beginTransaction();
                 searchURL nextURL = (searchURL) session.get(searchURL.class, currentURLID);
-                session.getTransaction().commit();
                 if(logger.isInfoEnabled()){
                     logger.info("Current Crawling ID: " + this.currentURLID);
                     logger.info("Crawler for URL: " + nextURL.getURL());
@@ -73,7 +73,10 @@ public class Crawler {
     public void crawlContent() {
         String url_content_body_text;
         searchURL target = findsearchURLbyID(currentContentID);
-        searchResult target_rs = new searchResult();
+        searchResult target_rs = findsearchResultbyID(currentContentID);
+        if(target_rs.set == true){
+            return;
+        }
         target_rs.setURLID(target.getURLID());
         target_rs.setUrl(target.getURL());
         Map hm_result = new HashMap<String,Integer>();;
@@ -215,8 +218,30 @@ public class Crawler {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        session.close();
         return temp;
     }
+
+
+    public searchResult findsearchResultbyID(int id){
+        Session session = DBConnectionManager.getSession();
+        searchResult temp = null;
+        try {
+            temp =  (searchResult) session.get(searchResult.class, id);
+            if(temp == null){
+                return new searchResult();
+            }
+            temp.set = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        session.close();
+        return temp;
+    }
+
+
+
+
 
     public int getUrlIDfromDB() {
         Session session = DBConnectionManager.getSession();
@@ -287,7 +312,25 @@ public class Crawler {
         catch ( Exception e ) {
             e.printStackTrace();
         }
-        currentContentID = new Integer(props.getProperty("currentContentID", "0"));
+        currentContentID = getContentUrlIDfromDB();
         currentURLID = new Integer(props.getProperty("currentURLID", "0"));
+    }
+
+
+    public int getContentUrlIDfromDB() {
+        Session session = DBConnectionManager.getSession();
+        int rs = 0;
+        try {
+            session.beginTransaction();
+            Query q = session.createQuery("FROM searchResult ");
+            List<searchURL> results = q.list();
+            rs = results.size();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        session.close();
+        return rs;
     }
 }

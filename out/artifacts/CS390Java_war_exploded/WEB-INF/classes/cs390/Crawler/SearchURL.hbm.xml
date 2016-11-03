@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cs390.Crawler.searchURL" table="search_url">
+        <meta attribute="class-description">
+            This class contains the searchURL detail.
+        </meta>
+        <id name="URLID" type="int" column="urlid"></id>
+        <property name="URL" column="url" type="string"/>
+        <property name="Description" column="description" type="text"/>
+
+    </class>
+
+
+    <class name="cs390.Crawler.searchResult" table="search_result">
+        <meta attribute="class-description">
+            This class contains the searchURL detail.
+        </meta>
+        <id name="URLID" type="int" column="urlid">
+        </id>
+        <property name="url" column="url" type="string"/>
+        <property name="content" column="content" type="text"/>
+
+        <map name="hm_result" table="search_result_word" cascade="all">
+            <key column="urlid"/>
+            <map-key type="java.lang.String" column="word"/>
+            <element type="java.lang.Integer" column="count"/>
+        </map>
+    </class>
+
+
+</hibernate-mapping>
