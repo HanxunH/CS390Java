@@ -51,5 +51,6 @@
     <orderEntry type="library" name="slf4j-log4j12-1.7.21" level="project" />
     <orderEntry type="library" name="Spring-4.3.3.RELEASE" level="project" />
     <orderEntry type="library" name="Spring MVC-4.3.3.RELEASE" level="project" />
+    <orderEntry type="library" name="servlet-api" level="project" />
   </component>
 </module>

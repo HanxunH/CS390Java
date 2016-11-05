@@ -140,7 +140,6 @@
 			// Events.
 			// Note: If you're *not* using AJAX, get rid of this event listener.
 				$form.addEventListener('submit', function(event) {
-					$message._show('Searching', 'Searching');
 
 					event.stopPropagation();
 					event.preventDefault();
@@ -163,6 +162,7 @@
 								$submit.disabled = false;
 
 							// Show message.
+                            $message._show('Searching', 'Searching');
 								//$message._show('failure', 'Something went wrong. Please try again.');
 
 						}, 750);

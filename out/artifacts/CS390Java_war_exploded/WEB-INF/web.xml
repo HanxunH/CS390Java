@@ -8,13 +8,16 @@
         <param-value>WEB-INF/applicationContext.xml</param-value>
     </context-param>
 
-
-
     <servlet>
-        <servlet-name>dispatcher</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
+        <servlet-name>SearchEngineServlet</servlet-name>
+        <servlet-class>cs390.SearchEngine.SearchEngineServlet</servlet-class>
     </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchEngineServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+
 
     <listener>
         <listener-class>

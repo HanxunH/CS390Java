@@ -1045,7 +1045,7 @@
 
 /* Signup Form */
 
-	#signup-form {
+	#search-form {
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -1053,17 +1053,17 @@
 		position: relative;
 	}
 
-		#signup-form input[type="text"],
-		#signup-form input[type="password"],
-		#signup-form input[type="email"] {
+		#search-form input[type="text"],
+		#search-form input[type="password"],
+		#search-form input[type="email"] {
 			width: 18em;
 		}
 
-		#signup-form > * {
+		#search-form > * {
 			margin: 0 0 0 1em;
 		}
 
-		#signup-form > :first-child {
+		#search-form > :first-child {
 			margin: 0 0 0 0;
 		}
 
@@ -1076,17 +1076,17 @@
 				flex-direction: column;
 			}
 
-				#signup-form input[type="type"],
-				#signup-form input[type="password"],
-				#signup-form input[type="email"] {
+				#search-form input[type="type"],
+				#search-form input[type="password"],
+				#search-form input[type="email"] {
 					width: 100%;
 				}
 
-				#signup-form > * {
+				#search-form > * {
 					margin: 1.25em 0 0 0;
 				}
 
-				#signup-form .message {
+				#search-form .message {
 					bottom: -1.5em;
 					font-size: 0.9em;
 					height: 1em;

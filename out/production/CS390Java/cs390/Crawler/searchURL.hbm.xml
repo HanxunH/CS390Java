@@ -25,8 +25,9 @@
         <map name="hm_result" table="search_result_word" cascade="all">
             <key column="urlid"/>
             <map-key type="java.lang.String" column="word"/>
-            <element type="java.lang.Integer" column="count"/>
+            <element type="java.lang.Integer" column="word_count"/>
         </map>
+
     </class>
 
 

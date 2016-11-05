@@ -1,7 +1,7 @@
 package cs390.Crawler;
 
 import org.hibernate.Session;
-
+import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +15,11 @@ public class searchResult {
     private Map hm_result;
     private String content;
     public boolean set;
+    private LinkedList<String> keywords;
+
+
+
+
     public void save(){
         Session session = null;
         try {
@@ -72,5 +77,13 @@ public class searchResult {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public LinkedList<String> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(LinkedList<String> keywords) {
+        this.keywords = keywords;
     }
 }

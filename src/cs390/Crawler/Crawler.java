@@ -64,7 +64,7 @@ public class Crawler {
     public void startCrawlForContent() {
         while(currentContentID < getUrlIDfromDB()){
             crawlContent();
-            currentContentID++;
+            currentContentID = getContentUrlIDfromDB();
             saveParam(currentContentID,"currentContentID");
         }
     }
@@ -85,7 +85,6 @@ public class Crawler {
                 Document document = Jsoup.connect(target.getURL()).get();
                 url_content_body_text = document.text();
                 url_content_body_text = url_content_body_text.toLowerCase();
-                String[] words = url_content_body_text.split("\\s+");
                 Scanner scanner = new Scanner(url_content_body_text).useDelimiter("\\s* \\s*");
                 target_rs.setContent(url_content_body_text);
                 while(scanner.hasNext()){
