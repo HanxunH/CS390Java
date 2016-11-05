@@ -33,6 +33,7 @@ public class Crawler {
         urlID = getUrlIDfromDB();
         baseURL = base;
         domain = domainString;
+        currentContentID = getContentUrlIDfromDB();
         maxurls = 1000;
         readParam();
         insertURL(baseURL);
@@ -64,7 +65,7 @@ public class Crawler {
     public void startCrawlForContent() {
         while(currentContentID < getUrlIDfromDB()){
             crawlContent();
-            currentContentID = getContentUrlIDfromDB();
+            currentContentID = currentContentID + 1;
             saveParam(currentContentID,"currentContentID");
         }
     }

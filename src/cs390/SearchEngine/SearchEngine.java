@@ -32,7 +32,6 @@ public class SearchEngine {
             for(searchResult rs : results){
                 System.out.println(rs.getUrl());
                 System.out.println(rs.getHm_result().get(searchKeyword));
-
             }
             searchEngineResult = results;
         }catch (Exception e){
