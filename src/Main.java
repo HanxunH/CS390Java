@@ -17,8 +17,12 @@ public class Main {
 
         crawlerRunnable myRunnable2 = new crawlerRunnable(c);
         myRunnable2.setMode(1);
-        Thread t2 = new Thread(myRunnable2);
-        t2.start();
+        Thread[] ta = new Thread[4];
+        for(int i=0;i<4;i++){
+            ta[i] = new Thread(myRunnable2);
+            ta[i].start();
+        }
+
 
         crawlerRunnable myRunnable3 = new crawlerRunnable(c);
         myRunnable3.setMode(2);

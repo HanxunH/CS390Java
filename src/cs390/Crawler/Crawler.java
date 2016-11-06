@@ -70,9 +70,15 @@ public class Crawler {
 
     public void startCrawlForContent() {
         while(currentContentID < getUrlIDfromDB()){
+            synchronized(this) {
+                readParam();
+                if(logger.isInfoEnabled()){
+                    long threadId = Thread.currentThread().getId();
+                    logger.info("Thread : " + threadId + " Crawl for content URLID: " + currentContentID);
+                }
+                saveParam(currentContentID+1,"currentContentID");
+            }
             crawlContent();
-            currentContentID = currentContentID + 1;
-            saveParam(currentContentID,"currentContentID");
         }
     }
 
@@ -81,9 +87,6 @@ public class Crawler {
         String url_content_body_text;
         searchURL target = findsearchURLbyID(currentContentID);
         searchResult target_rs = findsearchResultbyID(currentContentID);
-        if(target_rs.set == true){
-            return;
-        }
         target_rs.setURLID(target.getURLID());
         target_rs.setUrl(target.getURL());
         target_rs.setTitle(target.getTitle());
@@ -127,17 +130,22 @@ public class Crawler {
 
     public void startCrawlForImage(){
         while(currentImageID < getUrlIDfromDB()){
+            synchronized(this) {
+                readParam();
+                saveParam(currentImageID+1,"currentImageID");
+            }
             crawlForImage();
-            currentImageID = currentImageID + 1;
-            saveParam(currentImageID,"currentImageID");
         }
     }
 
     public void startCrawlForTitle(){
         while(currentTitleID < getUrlIDfromDB()){
+            synchronized(this) {
+                readParam();
+                saveParam(currentTitleID+1,"currentTitleID");
+            }
             crawlForTitle();
-            currentTitleID = currentTitleID + 1;
-            saveParam(currentTitleID,"currentTitleID");
+
         }
     }
 
@@ -414,7 +422,7 @@ public class Crawler {
         catch ( Exception e ) {
             e.printStackTrace();
         }
-        currentContentID = getContentUrlIDfromDB();
+        currentContentID = new Integer(props.getProperty("currentContentID", "0"));
         currentURLID = new Integer(props.getProperty("currentURLID", "0"));
         currentImageID = new Integer(props.getProperty("currentImageID", "0"));
         currentTitleID = new Integer(props.getProperty("currentTitleID", "0"));
