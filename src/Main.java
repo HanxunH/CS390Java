@@ -18,5 +18,11 @@ public class Main {
         Thread t2 = new Thread(myRunnable2);
         t2.start();
 
+        crawlerRunnable myRunnable3 = new crawlerRunnable(c);
+        myRunnable3.setMode(2);
+        Thread t3 = new Thread(myRunnable3);
+        t3.start();
+
+
     }
 }

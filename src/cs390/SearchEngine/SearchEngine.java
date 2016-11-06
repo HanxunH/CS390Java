@@ -15,6 +15,8 @@ import java.util.*;
 public class SearchEngine {
     private String searchKeyword;
     public List<searchResult> searchEngineResult;
+    public List<SearchEngineURLDetail> searchEngineURLDetailList;
+
     final static Logger logger = Logger.getLogger(SearchEngine.class);
 
     public SearchEngine(String searchKeyword) {
@@ -24,22 +26,50 @@ public class SearchEngine {
 
 
     public void start() {
+        int i = 0;
         Session session = DBConnectionManager.getSession();
-        Query q = session.createQuery("FROM searchResult AS rs Left JOIN rs.hm_result WHERE word = :keyword order by word_count DESC");
-        q.setParameter("keyword",searchKeyword);
-        try{
-            List<searchResult> results = q.list();
-            for(searchResult rs : results){
-                System.out.println(rs.getUrl());
-                System.out.println(rs.getHm_result().get(searchKeyword));
+        Scanner scanner = new Scanner(searchKeyword).useDelimiter("\\s* \\s*");
+        while(scanner.hasNext()) {
+            Query q = session.createQuery("FROM searchResult AS rs Left JOIN rs.hm_result WHERE word = :keyword order by word_count DESC");
+            q.setParameter("keyword",scanner.next());
+            try{
+                List<searchResult> temp_rs_list = q.list();
+                if(i==0){
+                    searchEngineResult = temp_rs_list;
+                }else{
+                    List<searchResult> temp_rs_list2 = searchEngineResult;
+                    temp_rs_list2.retainAll(temp_rs_list);
+                    searchEngineResult = temp_rs_list2;
+                }
+                i++;
+            }catch (Exception e){
+                e.printStackTrace();
             }
-            searchEngineResult = results;
-        }catch (Exception e){
-            e.printStackTrace();
         }
 
+        for(searchResult rs : searchEngineResult){
+            searchURL temp_url  = findsearchURLbyID(rs.getURLID());
+            SearchEngineURLDetail sers = new SearchEngineURLDetail();
+            sers.setSu(temp_url);
+            sers.setRs(rs);
+            searchEngineURLDetailList.add(sers);
+        }
+    }
 
 
+
+
+    public searchURL findsearchURLbyID(int id){
+        searchURL temp = new searchURL();
+        Session session = DBConnectionManager.getSession();
+        try {
+            temp =  (searchURL) session.get(searchURL.class, id);
+            temp.set = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        session.close();
+        return temp;
     }
 
 

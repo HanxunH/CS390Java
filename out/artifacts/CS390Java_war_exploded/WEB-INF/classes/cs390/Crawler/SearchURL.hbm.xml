@@ -7,8 +7,10 @@
             This class contains the searchURL detail.
         </meta>
         <id name="URLID" type="int" column="urlid"></id>
-        <property name="URL" column="url" type="string"/>
+        <property name="URL" column="url" type="java.lang.String"/>
         <property name="Description" column="description" type="text"/>
+        <property name="image_url" column="image_url" type="java.lang.String"/>
+        <property name="title" column="title" type="java.lang.String"/>
 
     </class>
 

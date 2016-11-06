@@ -12,7 +12,8 @@ public class searchURL implements java.io.Serializable{
     private String URL;
     private String Description;
     public boolean set;
-
+    private String image_url;
+    private String title;
 
     public searchURL() {
         set = false;
@@ -60,4 +61,20 @@ public class searchURL implements java.io.Serializable{
         Description = description;
     }
 
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }

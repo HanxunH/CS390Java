@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 public class Crawler {
     private int currentURLID;
     private int currentContentID;
+    private int currentImageID;
     private int urlID;
 
     private String baseURL;
@@ -109,7 +110,37 @@ public class Crawler {
 
     }
 
+    public void startCrawlForImage(){
+        while(currentImageID < getUrlIDfromDB()){
+            crawlForImage();
+            currentImageID = currentImageID + 1;
+            saveParam(currentImageID,"currentImageID");
+        }
+    }
 
+
+
+
+
+    public void crawlForImage(){
+        searchURL target = findsearchURLbyID(currentImageID);
+        if(target.set){
+            try{
+                Document document = Jsoup.connect(target.getURL()).get();
+                Elements img = document.getElementsByTag("img");
+                if(img.size()>0 && img.get(0).hasAttr("alt")){
+                    target.setImage_url(img.get(0).absUrl("src"));
+                    if(logger.isInfoEnabled()){
+                        logger.info("Image saved for URLID: " + currentImageID + " URL: "+ target.getURL());
+                    }
+                    target.save();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+    }
 
 
 
@@ -118,12 +149,13 @@ public class Crawler {
         try {
             Document document = Jsoup.connect(url).get();
             try {
+                String title = document.title();
+                temp.setTitle(title);
                 String meta_description = document.select("meta[name=description]").get(0).attr("content");
                 temp.setDescription(meta_description);
                 if (validateDescription(meta_description)) {
                     temp.setDescription(meta_description);
                 } else {
-                    String title = document.title();
                     temp.setDescription(title);
                 }
             } catch (Exception e) {
@@ -314,6 +346,7 @@ public class Crawler {
         }
         currentContentID = getContentUrlIDfromDB();
         currentURLID = new Integer(props.getProperty("currentURLID", "0"));
+        currentImageID = new Integer(props.getProperty("currentImageID", "0"));
     }
 
 
