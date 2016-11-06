@@ -87,7 +87,9 @@ public class Crawler {
         target_rs.setURLID(target.getURLID());
         target_rs.setUrl(target.getURL());
         target_rs.setTitle(target.getTitle());
-        target_rs.setImage_url(target.getImage_url());
+        if(target.getImage_url() != null){
+            target_rs.setImage_url(target.getImage_url());
+        }
         target_rs.setDescription(target.getDescription());
 
         Map hm_result = new HashMap<String,Integer>();;
