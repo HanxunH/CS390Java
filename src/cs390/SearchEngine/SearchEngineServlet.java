@@ -15,10 +15,9 @@ public class SearchEngineServlet extends javax.servlet.http.HttpServlet {
         // Actual logic goes here.
         PrintWriter out = response.getWriter();
         String searchWord = request.getParameter("searchWord");
-        out.println("<h1>" + searchWord + "</h1>");
         SearchEngine se = new SearchEngine(searchWord);
         se.start();
-        request.getSession().setAttribute("keyword", se.getSearchKeyword());
+        request.getSession().setAttribute("keyword", searchWord);
         request.setAttribute("result_list", se.searchEngineURLDetailList); // add to request
         request.getRequestDispatcher("search.jsp").forward(request,response);
     }

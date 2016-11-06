@@ -17,8 +17,11 @@ import org.apache.log4j.Logger;
 public class Crawler {
     private int currentURLID;
     private int currentContentID;
+    private int currentUpdateContentID;
     private int currentImageID;
+    private int currentTitleID;
     private int urlID;
+    private removeKeyword tester;
 
     private String baseURL;
     private String domain;
@@ -31,6 +34,7 @@ public class Crawler {
     }
 
     public Crawler(String base, String domainString) {
+        tester = new removeKeyword();
         urlID = getUrlIDfromDB();
         baseURL = base;
         domain = domainString;
@@ -38,13 +42,13 @@ public class Crawler {
         maxurls = 1000;
         readParam();
         insertURL(baseURL);
+
     }
 
     public void startCrawlForURL() {
         session = DBConnectionManager.getSession();
         while (urlID < maxurls) {
             try {
-                session.beginTransaction();
                 searchURL nextURL = (searchURL) session.get(searchURL.class, currentURLID);
                 if(logger.isInfoEnabled()){
                     logger.info("Current Crawling ID: " + this.currentURLID);
@@ -60,6 +64,7 @@ public class Crawler {
         }
         session.close();
     }
+
 
 
 
@@ -81,6 +86,10 @@ public class Crawler {
         }
         target_rs.setURLID(target.getURLID());
         target_rs.setUrl(target.getURL());
+        target_rs.setTitle(target.getTitle());
+        target_rs.setImage_url(target.getImage_url());
+        target_rs.setDescription(target.getDescription());
+
         Map hm_result = new HashMap<String,Integer>();;
         if(target.set == true) {
             try {
@@ -92,10 +101,12 @@ public class Crawler {
                 while(scanner.hasNext()){
                     String temp = scanner.next();
                     temp.toLowerCase();
-                    if(hm_result.containsKey(temp)){
-                        hm_result.put(temp,(int)hm_result.get(temp)+1);
-                    }else{
-                        hm_result.put(temp,1);
+                    if(tester.is_remove_keyword(temp) == false){
+                        if(hm_result.containsKey(temp)){
+                            hm_result.put(temp,(int)hm_result.get(temp)+1);
+                        }else{
+                            hm_result.put(temp,1);
+                        }
                     }
                 }
                 target_rs.setHm_result(hm_result);
@@ -110,6 +121,8 @@ public class Crawler {
 
     }
 
+
+
     public void startCrawlForImage(){
         while(currentImageID < getUrlIDfromDB()){
             crawlForImage();
@@ -118,9 +131,45 @@ public class Crawler {
         }
     }
 
+    public void startCrawlForTitle(){
+        while(currentTitleID < getUrlIDfromDB()){
+            crawlForTitle();
+            currentTitleID = currentTitleID + 1;
+            saveParam(currentTitleID,"currentTitleID");
+        }
+    }
 
 
+    public void startUpdateContent(){
+        while(currentUpdateContentID < 2753){
+            updateSearchResult();
+            currentUpdateContentID = currentUpdateContentID + 1;
+            saveParam(currentUpdateContentID,"currentUpdateContentID");
+        }
+    }
 
+    public void updateSearchResult(){
+        searchResult target = findsearchResultbyID(currentUpdateContentID);
+        if(target == null){
+            if(logger.isInfoEnabled()){
+                logger.info("Error ");
+            }
+            return;
+        }
+        try{
+            searchURL s = findsearchURLbyID(target.getURLID());
+            target.setDescription(target.getDescription());
+            target.setImage_url(target.getImage_url());
+            target.setTitle(target.getTitle());
+            if(logger.isInfoEnabled()){
+                logger.info("Update for URLID: " + currentUpdateContentID + " URL: "+ target.getUrl());
+            }
+            target.save();
+        }   catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
     public void crawlForImage(){
         searchURL target = findsearchURLbyID(currentImageID);
@@ -131,10 +180,29 @@ public class Crawler {
                 if(img.size()>0 && img.get(0).hasAttr("alt")){
                     target.setImage_url(img.get(0).absUrl("src"));
                     if(logger.isInfoEnabled()){
-                        logger.info("Image saved for URLID: " + currentImageID + " URL: "+ target.getURL());
+                        logger.info("Image saved for URLID: " + currentTitleID + " URL: "+ target.getURL());
                     }
                     target.save();
                 }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+    public void crawlForTitle(){
+        searchURL target = findsearchURLbyID(currentTitleID);
+        if(target.set){
+            try{
+                Document document = Jsoup.connect(target.getURL()).get();
+                String title = document.title();
+                target.setTitle(title);
+                if(logger.isInfoEnabled()){
+                    logger.info("Title saved for URLID: " + currentTitleID + " URL: "+ target.getURL());
+                }
+                target.save();
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -347,6 +415,8 @@ public class Crawler {
         currentContentID = getContentUrlIDfromDB();
         currentURLID = new Integer(props.getProperty("currentURLID", "0"));
         currentImageID = new Integer(props.getProperty("currentImageID", "0"));
+        currentTitleID = new Integer(props.getProperty("currentTitleID", "0"));
+        currentUpdateContentID = new Integer(props.getProperty("currentUpdateContentID", "0"));
     }
 
 

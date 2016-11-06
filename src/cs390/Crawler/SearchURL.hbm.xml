@@ -23,6 +23,9 @@
         </id>
         <property name="url" column="url" type="string"/>
         <property name="content" column="content" type="text"/>
+        <property name="Description" column="description" type="text"/>
+        <property name="image_url" column="image_url" type="java.lang.String"/>
+        <property name="title" column="title" type="java.lang.String"/>
 
         <map name="hm_result" table="search_result_word" cascade="all">
             <key column="urlid"/>

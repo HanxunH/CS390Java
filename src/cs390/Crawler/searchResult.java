@@ -17,7 +17,9 @@ public class searchResult {
     public boolean set;
     private LinkedList<String> keywords;
 
-
+    private String Description;
+    private String image_url;
+    private String title;
 
 
     public void save(){
@@ -85,5 +87,29 @@ public class searchResult {
 
     public void setKeywords(LinkedList<String> keywords) {
         this.keywords = keywords;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

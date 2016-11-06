@@ -17,6 +17,10 @@ public class crawlerRunnable implements Runnable  {
             c.startCrawlForContent();
         }else if(mode == 2){
             c.startCrawlForImage();
+        }else if(mode == 3){
+            c.startCrawlForTitle();
+        }else if(mode == 4){
+            c.startUpdateContent();
         }
     }
 

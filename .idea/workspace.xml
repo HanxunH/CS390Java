@@ -2,63 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49ef4a93-387a-4288-931b-3939893af1ec" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineURLDetail.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/HTML-Resource/html5up-alpha/assets/sass/ie8.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/HTML-Resource/html5up-alpha/assets/sass/libs/_functions.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/HTML-Resource/html5up-alpha/assets/sass/libs/_mixins.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/HTML-Resource/html5up-alpha/assets/sass/libs/_skel.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/HTML-Resource/html5up-alpha/assets/sass/libs/_vars.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/HTML-Resource/html5up-alpha/assets/sass/main.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/README.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/css/font-awesome.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/css/ie8.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/css/images/overlay.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/css/main.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/fonts/FontAwesome.otf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/fonts/fontawesome-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/fonts/fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/fonts/fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/fonts/fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/fonts/fontawesome-webfont.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/js/ie/PIE.htc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/js/ie/backgroundsize.min.htc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/js/ie/html5shiv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/js/ie/respond.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/js/jquery.dropotron.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/js/jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/js/jquery.scrollgress.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/js/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/js/skel.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/js/util.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/sass/ie8.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/sass/libs/_functions.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/sass/libs/_mixins.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/sass/libs/_skel.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/sass/libs/_vars.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/assets/sass/main.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/contact.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/elements.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/generic.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/images/banner.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/images/pic01.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/images/pic02.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/images/pic03.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/images/pic04.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/images/pic05.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/index.html" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cs390/Crawler/removeKeyword.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/WEB-INF/classes/Main.class" afterPath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/WEB-INF/classes/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/WEB-INF/classes/cs390/Crawler/Crawler.class" afterPath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/WEB-INF/classes/cs390/Crawler/Crawler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/WEB-INF/classes/cs390/Crawler/crawlerRunnable.class" afterPath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/WEB-INF/classes/cs390/Crawler/crawlerRunnable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/WEB-INF/classes/cs390/SearchEngine/SearchEngine.class" afterPath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/WEB-INF/classes/cs390/SearchEngine/SearchEngine.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/WEB-INF/classes/cs390/SearchEngine/SearchEngineServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/WEB-INF/classes/cs390/SearchEngine/SearchEngineServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS390Java/Main.class" afterPath="$PROJECT_DIR$/out/production/CS390Java/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS390Java/cs390/Crawler/Crawler.class" afterPath="$PROJECT_DIR$/out/production/CS390Java/cs390/Crawler/Crawler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS390Java/cs390/Crawler/crawlerRunnable.class" afterPath="$PROJECT_DIR$/out/production/CS390Java/cs390/Crawler/crawlerRunnable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS390Java/cs390/Crawler/searchResult.class" afterPath="$PROJECT_DIR$/out/production/CS390Java/cs390/Crawler/searchResult.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS390Java/cs390/SearchEngine/SearchEngine.class" afterPath="$PROJECT_DIR$/out/production/CS390Java/cs390/SearchEngine/SearchEngine.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS390Java/cs390/SearchEngine/SearchEngineServlet.class" afterPath="$PROJECT_DIR$/out/production/CS390Java/cs390/SearchEngine/SearchEngineServlet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawler.properties" afterPath="$PROJECT_DIR$/crawler.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/search.jsp" afterPath="$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/search.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CS390Java/cs390/Crawler/searchURL.hbm.xml" afterPath="$PROJECT_DIR$/out/production/CS390Java/cs390/Crawler/searchURL.hbm.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs390/Crawler/Crawler.java" afterPath="$PROJECT_DIR$/src/cs390/Crawler/Crawler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs390/Crawler/SearchURL.hbm.xml" afterPath="$PROJECT_DIR$/src/cs390/Crawler/SearchURL.hbm.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs390/Crawler/crawlerRunnable.java" afterPath="$PROJECT_DIR$/src/cs390/Crawler/crawlerRunnable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs390/Crawler/searchURL.java" afterPath="$PROJECT_DIR$/src/cs390/Crawler/searchURL.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs390/Crawler/searchResult.java" afterPath="$PROJECT_DIR$/src/cs390/Crawler/searchResult.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngine.java" afterPath="$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineServlet.java" afterPath="$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/HTML-Resource/html5up-eventually/assets/sass/main.scss" afterPath="$PROJECT_DIR$/web/HTML-Resource/html5up-eventually/assets/sass/main.scss" />
@@ -84,47 +48,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SearchEngine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-251">
-              <caret line="44" column="26" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/search.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1634">
-              <caret line="97" column="22" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
-              <folding>
-                <element signature="e#7589#7596#0#HTML" expanded="true" />
-                <element signature="e#8096#8103#0#HTML" expanded="true" />
-                <element signature="e#8328#8334#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchEngineURLDetail.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineURLDetail.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="18" column="26" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SearchEngineServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+            <state relative-caret-position="152">
+              <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,28 +60,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchURL.hbm.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/SearchURL.hbm.xml">
+      <file leaf-file-name="crawlerRunnable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/crawlerRunnable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+            <state relative-caret-position="247">
+              <caret line="16" column="34" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchURL.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/searchURL.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
-              <folding>
-                <element signature="e#1331#1332#0" expanded="true" />
-                <element signature="e#1363#1364#0" expanded="true" />
-                <element signature="e#1516#1517#0" expanded="true" />
-                <element signature="e#1558#1559#0" expanded="true" />
-                <element signature="e#1592#1593#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="475">
+              <caret line="32" column="8" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -161,8 +83,8 @@
       <file leaf-file-name="Crawler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/Crawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="133" column="83" selection-start-line="133" selection-start-column="83" selection-end-line="133" selection-end-column="83" />
+            <state relative-caret-position="266">
+              <caret line="102" column="35" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -170,11 +92,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="removeKeyword.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/removeKeyword.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="crawler.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crawler.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+            <state relative-caret-position="95">
+              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -215,21 +147,22 @@
         <option value="$PROJECT_DIR$/src/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/web/HTML-Resource/html5up-eventually/index.html" />
         <option value="$PROJECT_DIR$/web/WEB-INF/dispatcher-servlet.xml" />
-        <option value="$PROJECT_DIR$/web/search_result.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
-        <option value="$PROJECT_DIR$/src/cs390/Crawler/searchResult.java" />
         <option value="$PROJECT_DIR$/src/cs390/SearchEngine/HibernateListener.java" />
         <option value="$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineURLDetail.java" />
+        <option value="$PROJECT_DIR$/src/cs390/Crawler/searchURL.java" />
+        <option value="$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngine.java" />
+        <option value="$PROJECT_DIR$/web/search_result.jsp" />
+        <option value="$PROJECT_DIR$/web/search.jsp" />
+        <option value="$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineServlet.java" />
+        <option value="$PROJECT_DIR$/src/cs390/Crawler/searchResult.java" />
+        <option value="$PROJECT_DIR$/src/cs390/Crawler/SearchURL.hbm.xml" />
         <option value="$PROJECT_DIR$/src/cs390/Crawler/crawlerRunnable.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineServlet.java" />
-        <option value="$PROJECT_DIR$/src/cs390/Crawler/searchURL.java" />
-        <option value="$PROJECT_DIR$/src/cs390/Crawler/SearchURL.hbm.xml" />
-        <option value="$PROJECT_DIR$/crawler.properties" />
-        <option value="$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngine.java" />
         <option value="$PROJECT_DIR$/src/cs390/Crawler/Crawler.java" />
-        <option value="$PROJECT_DIR$/web/search.jsp" />
+        <option value="$PROJECT_DIR$/crawler.properties" />
+        <option value="$PROJECT_DIR$/src/cs390/Crawler/removeKeyword.java" />
       </list>
     </option>
   </component>
@@ -308,13 +241,16 @@
       <pane id="Scope">
         <subPane subId="Default" />
       </pane>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="CS390Java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -401,13 +337,14 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
@@ -483,7 +420,10 @@
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <method />
+      <method>
+        <option name="Make" enabled="true" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
@@ -506,7 +446,10 @@
       <Profilers>
         <option name="GAPID_DISABLE_PCS" value="false" />
       </Profilers>
-      <method />
+      <method>
+        <option name="Make" enabled="true" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -872,7 +815,6 @@
     <configuration default="false" name="Tomcat " type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080" />
       <option name="BROWSER_ID" value="e5120d43-2c3f-47ef-9f26-65e539e05186" />
-      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="CS390Java:war exploded">
           <settings>
@@ -990,11 +932,12 @@
       <workItem from="1478316563301" duration="55000" />
       <workItem from="1478316621754" duration="3432000" />
       <workItem from="1478367392169" duration="12277000" />
+      <workItem from="1478412160738" duration="5271000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101267000" />
+    <option name="totallyTimeSpent" value="106538000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1017,7 +960,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.56506026" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3554217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1086,30 +1029,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/crawler.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CS390Java.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/Crawler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/SearchResult.hbm.xml" />
     <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/SearchResultWord.hbm.xml" />
     <entry file="file://$PROJECT_DIR$/src/hibernate.cfg.xml">
@@ -1219,13 +1138,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example.properties" />
-    <entry file="file://$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/contact.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/contact.html" />
     <entry file="file://$PROJECT_DIR$/src/database.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1256,7 +1169,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/search_result.jsp" />
     <entry file="jar://$PROJECT_DIR$/lib/spring-webmvc-4.3.3.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3078">
@@ -1287,14 +1199,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cs390/SearchEngine/HibernateListener.java" />
-    <entry file="file://$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2470">
-          <caret line="130" column="26" selection-start-line="130" selection-start-column="26" selection-end-line="130" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/web/HTML-Resource/html5up-alpha/index.html" />
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1303,75 +1208,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineURLdetain.java">
+    <entry file="file://$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineURLdetain.java" />
+    <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/DBConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="34" />
+        <state relative-caret-position="114">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/searchResult.java">
+    <entry file="file://$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineURLDetail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="62" column="23" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
+        <state relative-caret-position="266">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="26" />
           <folding>
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="e#1315#1316#0" expanded="true" />
+            <element signature="e#344#345#0" expanded="false" />
+            <element signature="e#369#370#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/crawlerRunnable.java">
+    <entry file="file://$PROJECT_DIR$/out/artifacts/CS390Java_war_exploded/search.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/web/search_result.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        <state relative-caret-position="247">
+          <caret line="102" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/searchURL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+        <state relative-caret-position="190">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="15" selection-end-column="25" />
           <folding>
-            <element signature="e#1331#1332#0" expanded="true" />
-            <element signature="e#1363#1364#0" expanded="true" />
-            <element signature="e#1516#1517#0" expanded="true" />
-            <element signature="e#1558#1559#0" expanded="true" />
-            <element signature="e#1592#1593#0" expanded="true" />
+            <element signature="e#1166#1167#0" expanded="true" />
+            <element signature="e#1200#1201#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/SearchURL.hbm.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+        <state relative-caret-position="232">
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crawler.properties">
+    <entry file="file://$PROJECT_DIR$/web/search.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="76">
+          <caret line="100" column="135" selection-start-line="100" selection-start-column="135" selection-end-line="100" selection-end-column="135" />
+          <folding>
+            <element signature="e#5936#5943#0#HTML" expanded="false" />
+            <element signature="e#6443#6450#0#HTML" expanded="false" />
+            <element signature="e#6675#6681#0#HTML" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/Crawler.java">
+    <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/searchResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="133" column="83" selection-start-line="133" selection-start-column="83" selection-end-line="133" selection-end-column="83" />
+        <state relative-caret-position="589">
+          <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+          <folding>
+            <element signature="e#1372#1373#0" expanded="true" />
+            <element signature="e#1402#1403#0" expanded="true" />
+            <element signature="e#1950#1951#0" expanded="true" />
+            <element signature="e#1984#1985#0" expanded="true" />
+            <element signature="e#2038#2039#0" expanded="true" />
+            <element signature="e#2079#2080#0" expanded="true" />
+            <element signature="e#2115#2116#0" expanded="true" />
+            <element signature="e#2147#2148#0" expanded="true" />
+            <element signature="e#2197#2198#0" expanded="true" />
+            <element signature="e#2239#2240#0" expanded="true" />
+            <element signature="e#2271#2272#0" expanded="true" />
+            <element signature="e#2299#2300#0" expanded="true" />
+            <element signature="e#2341#2342#0" expanded="true" />
+            <element signature="e#2375#2376#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="541">
+          <caret line="29" column="32" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1380,41 +1310,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        <state relative-caret-position="152">
+          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-251">
-          <caret line="44" column="26" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs390/SearchEngine/SearchEngineURLDetail.java">
+    <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/Crawler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="26" />
+          <caret line="102" column="35" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/search.jsp">
+    <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/crawlerRunnable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1634">
-          <caret line="97" column="22" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
-          <folding>
-            <element signature="e#7589#7596#0#HTML" expanded="true" />
-            <element signature="e#8096#8103#0#HTML" expanded="true" />
-            <element signature="e#8328#8334#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="247">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawler.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs390/Crawler/removeKeyword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

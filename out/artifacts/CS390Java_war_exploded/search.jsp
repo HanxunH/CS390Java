@@ -1,10 +1,12 @@
 <%--
   Created by IntelliJ IDEA.
   User: Curtis
-  Date: 11/4/16
-  Time: 10:27 AM
+  Date: 11/6/16
+  Time: 1:22 AM
   To change this template use File | Settings | File Templates.
 --%>
+
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="cs390.Crawler.*" %>
 <%@ page import="java.util.*" %>
@@ -51,7 +53,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Start Bootstrap</a>
+            <a class="navbar-brand" href="../">CS390Java Project</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -78,8 +80,8 @@
     <!-- Page Heading -->
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Page Heading
-                <small>Secondary Text</small>
+            <h1 class="page-header">Search Result
+                <small>for ${keyword}</small>
             </h1>
         </div>
     </div>
@@ -92,16 +94,27 @@
 
                 out.print("    <div class=\"row\">\n" +
                         "        <div class=\"col-md-7\">\n" +
-                        "            <a href=\"#\">\n" +
-                        "                <img class=\"img-responsive\" src=\"http://placehold.it/700x300\" alt=\"\">\n" +
-                        "            </a>\n" +
-                        "        </div>" +
-                        "        <div class=\"col-md-5\">\n");
+                        "            <a href=\" " );
+                out.print(r.getSu().getURL());
+                out.print("\">");
+
+                out.println("<img class=\"img-responsive\" src=\"" + r.getSu().getImage_url() + "\" alt=\"\" height=\"150\" width=\"350\">");
+
+                out.println("            </a>\n" +
+                        "        </div>\n" +
+                        "        <div class=\"col-md-5\">");
 
                 out.println("<h3>" + r.getSu().getTitle() +"</h3>");
+                out.println("<h4>" + r.getSu().getURL() +"</h4>");
+                out.println("<p>" + r.getSu().getDescription() +"</p>");
 
-                out.println("</div>\n" +
-                        "    </div>");
+
+                out.println("<a class=\"btn btn-primary\" href=\"" + r.getSu().getURL() + "\">Go to This Page <span class=\"glyphicon glyphicon-chevron-right\"></span></a>");
+                out.println("        </div>\n" +
+                        "    </div>\n" +
+                        "    <!-- /.row -->\n" +
+                        "\n" +
+                        "    <hr>");
             }
         }
     %>
@@ -141,60 +154,6 @@
 
     <hr>
 
-    <!-- Project Three -->
-    <div class="row">
-        <div class="col-md-7">
-            <a href="#">
-                <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-            </a>
-        </div>
-        <div class="col-md-5">
-            <h3>Project Three</h3>
-            <h4>Subheading</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
-            <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
-
-    <!-- Project Four -->
-    <div class="row">
-
-        <div class="col-md-7">
-            <a href="#">
-                <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-            </a>
-        </div>
-        <div class="col-md-5">
-            <h3>Project Four</h3>
-            <h4>Subheading</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quidem, consectetur, officia rem officiis illum aliquam perspiciatis aspernatur quod modi hic nemo qui soluta aut eius fugit quam in suscipit?</p>
-            <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
-
-    <!-- Project Five -->
-    <div class="row">
-        <div class="col-md-7">
-            <a href="#">
-                <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-            </a>
-        </div>
-        <div class="col-md-5">
-            <h3>Project Five</h3>
-            <h4>Subheading</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, quo, minima, inventore voluptatum saepe quos nostrum provident ex quisquam hic odio repellendus atque porro distinctio quae id laboriosam facilis dolorum.</p>
-            <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
 
     <!-- Pagination -->
     <div class="row text-center">

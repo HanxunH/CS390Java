@@ -22,6 +22,7 @@ public class SearchEngine {
     public SearchEngine(String searchKeyword) {
         this.searchKeyword = searchKeyword;
         this.searchKeyword = this.searchKeyword.toLowerCase();
+        searchEngineURLDetailList = new ArrayList<SearchEngineURLDetail>();
     }
 
 
