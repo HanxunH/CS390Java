@@ -13,12 +13,13 @@ public class SearchEngineServlet extends javax.servlet.http.HttpServlet {
         // Set response content type
         response.setContentType("text/html");
         // Actual logic goes here.
-        PrintWriter out = response.getWriter();
         String searchWord = request.getParameter("searchWord");
         SearchEngine se = new SearchEngine(searchWord);
         se.start();
+
         request.getSession().setAttribute("keyword", searchWord);
-        request.setAttribute("result_list", se.searchEngineURLDetailList); // add to request
+        request.setAttribute("result_list", se.searchEngineResult); // add to request
+
         request.getRequestDispatcher("search.jsp").forward(request,response);
     }
 

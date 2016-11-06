@@ -4,7 +4,8 @@ import cs390.Crawler.*;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.*;
@@ -15,20 +16,20 @@ import java.util.*;
 public class SearchEngine {
     private String searchKeyword;
     public List<searchResult> searchEngineResult;
-    public List<SearchEngineURLDetail> searchEngineURLDetailList;
 
     final static Logger logger = Logger.getLogger(SearchEngine.class);
 
     public SearchEngine(String searchKeyword) {
         this.searchKeyword = searchKeyword;
         this.searchKeyword = this.searchKeyword.toLowerCase();
-        searchEngineURLDetailList = new ArrayList<SearchEngineURLDetail>();
     }
 
 
     public void start() {
         int i = 0;
-        Session session = DBConnectionManager.getSession();
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        DBConnectionManager connectionManager = (DBConnectionManager)context.getBean("connectionManager");
+        Session session = connectionManager.getSession();
         Scanner scanner = new Scanner(searchKeyword).useDelimiter("\\s* \\s*");
         while(scanner.hasNext()) {
             Query q = session.createQuery("FROM searchResult AS rs Left JOIN rs.hm_result WHERE word = :keyword order by word_count DESC");
@@ -48,13 +49,6 @@ public class SearchEngine {
             }
         }
 
-        for(searchResult rs : searchEngineResult){
-            searchURL temp_url  = findsearchURLbyID(rs.getURLID());
-            SearchEngineURLDetail sers = new SearchEngineURLDetail();
-            sers.setSu(temp_url);
-            sers.setRs(rs);
-            searchEngineURLDetailList.add(sers);
-        }
     }
 
 

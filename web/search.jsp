@@ -8,9 +8,8 @@
 
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="cs390.Crawler.*" %>
+<%@ page import="cs390.Crawler.searchResult" %>
 <%@ page import="java.util.*" %>
-<%@ page import="cs390.SearchEngine.SearchEngineURLDetail" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +57,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li>
+                <!--<li>
                     <a href="#">About</a>
                 </li>
                 <li>
@@ -66,8 +65,12 @@
                 </li>
                 <li>
                     <a href="#">Contact</a>
-                </li>
+                </li>  -->
             </ul>
+            <form class="navbar-form navbar-right" method="post" action="search">
+                <input type="text" placeholder="" name="searchWord" class="form-control">
+                <button type="submit" class="btn btn-success">Search</button>
+            </form>
         </div>
         <!-- /.navbar-collapse -->
     </div>
@@ -88,28 +91,28 @@
     <!-- /.row -->
     <%
         // retrieve your list from the request, with casting
-        List<SearchEngineURLDetail> rs = (List<SearchEngineURLDetail>)request.getAttribute("result_list");
-        if(rs != null){
-            for(SearchEngineURLDetail r : rs){
+        List<searchResult> rs = (List<searchResult>)request.getAttribute("result_list");
+        if(rs != null && rs.size() !=0 ){
+            for(searchResult r : rs){
 
                 out.print("    <div class=\"row\">\n" +
                         "        <div class=\"col-md-7\">\n" +
                         "            <a href=\" " );
-                out.print(r.getSu().getURL());
+                out.print(r.getUrl());
                 out.print("\">");
 
-                out.println("<img class=\"img-responsive\" src=\"" + r.getSu().getImage_url() + "\" alt=\"\" height=\"150\" width=\"350\">");
+                out.println("<img class=\"img-responsive\" src=\"" + r.getImage_url() + "\" alt=\"\" height=\"150\" width=\"350\">");
 
                 out.println("            </a>\n" +
                         "        </div>\n" +
                         "        <div class=\"col-md-5\">");
 
-                out.println("<h3>" + r.getSu().getTitle() +"</h3>");
-                out.println("<h4>" + r.getSu().getURL() +"</h4>");
-                out.println("<p>" + r.getSu().getDescription() +"</p>");
+                out.println("<h3>" + r.getTitle() +"</h3>");
+                out.println("<h4>" + r.getUrl() +"</h4>");
+                out.println("<p>" + r.getDescription() +"</p>");
 
 
-                out.println("<a class=\"btn btn-primary\" href=\"" + r.getSu().getURL() + "\">Go to This Page <span class=\"glyphicon glyphicon-chevron-right\"></span></a>");
+                out.println("<a class=\"btn btn-primary\" href=\"" + r.getUrl() + "\">Go to This Page <span class=\"glyphicon glyphicon-chevron-right\"></span></a>");
                 out.println("        </div>\n" +
                         "    </div>\n" +
                         "    <!-- /.row -->\n" +
@@ -119,7 +122,7 @@
         }
     %>
     <!-- Project One -->
-    <div class="row">
+    <!--<div class="row">
         <div class="col-md-7">
             <a href="#">
                 <img class="img-responsive" src="http://placehold.it/700x300" alt="">
@@ -132,27 +135,9 @@
             <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
+    <hr>      -->
     <!-- /.row -->
 
-    <hr>
-
-    <!-- Project Two -->
-    <div class="row">
-        <div class="col-md-7">
-            <a href="#">
-                <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-            </a>
-        </div>
-        <div class="col-md-5">
-            <h3>Project Two</h3>
-            <h4>Subheading</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
-            <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
 
 
     <!-- Pagination -->
