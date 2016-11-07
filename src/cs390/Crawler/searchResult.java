@@ -16,7 +16,7 @@ public class searchResult {
     private String content;
     public boolean set;
     private LinkedList<String> keywords;
-
+    private String displayDescriptionInSearchEngineResult;
     private String Description;
     private String image_url;
     private String title;
@@ -39,6 +39,14 @@ public class searchResult {
     public searchResult() {
         set = false;
         hm_result = new HashMap<String,Integer>();
+    }
+
+    public void searchKeyWordInContent(String Keyword){
+        Scanner scanner = new Scanner(Keyword).useDelimiter("\\s* \\s*");
+        while(scanner.hasNext()) {
+
+
+        }
     }
 
     public int getURLID() {
@@ -111,5 +119,13 @@ public class searchResult {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDisplayDescriptionInSearchEngineResult() {
+        return displayDescriptionInSearchEngineResult;
+    }
+
+    public void setDisplayDescriptionInSearchEngineResult(String displayDescriptionInSearchEngineResult) {
+        this.displayDescriptionInSearchEngineResult = displayDescriptionInSearchEngineResult;
     }
 }

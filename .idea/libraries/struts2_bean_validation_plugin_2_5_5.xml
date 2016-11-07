@@ -1,0 +1,34 @@
+<component name="libraryTable">
+  <library name="struts2-bean-validation-plugin-2.5.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/struts2-bean-validation-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-cdi-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-config-browser-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-convention-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-core-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-dwr-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-embeddedjsp-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-gxp-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-jasperreports-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-javatemplates-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-jfreechart-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-json-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-junit-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-osgi-admin-bundle-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-osgi-demo-bundle-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-osgi-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-oval-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-pell-multipart-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-plexus-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-portlet-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-rest-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-sitegraph-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-sitemesh-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-spring-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-testng-plugin-2.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-tiles-plugin-2.5.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

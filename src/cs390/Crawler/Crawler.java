@@ -74,7 +74,7 @@ public class Crawler {
                 readParam();
                 if(logger.isInfoEnabled()){
                     long threadId = Thread.currentThread().getId();
-                    logger.info("Thread : " + threadId + " Crawl for content URLID: " + currentContentID);
+                    logger.info("Thread: " + threadId + " Crawl for content URLID: " + currentContentID);
                 }
                 saveParam(currentContentID+1,"currentContentID");
             }
@@ -445,5 +445,51 @@ public class Crawler {
         }
         session.close();
         return rs;
+    }
+
+    public void crawlForPeople(){
+        String base_url = "https://www.cs.purdue.edu/people/faculty/index.html";
+        try{
+            Document doc = Jsoup.connect(base_url).get();
+            for (Element table : doc.select("table")) {
+                for (Element row : table.select("tr")) {
+					searchPeople sp = new searchPeople();
+					Elements tds = row.select("td");
+                    if(tds.size()<1){
+                        continue;
+                    }
+                    int i = 0;
+                    for(Element t : tds){
+						System.out.print(t.text()+ " ");
+                        if(i == 0){
+                            String name = tds.get(i).text();
+                            Scanner scanner = new Scanner(name).useDelimiter("\\s* \\s*");
+                            sp.setFirstName(scanner.next());
+                            sp.setLastName(scanner.next());
+                        } else if (i == 1) {
+                            sp.setPosition(tds.get(i).text());
+                        } else if(!t.select("phone").text().equals("")){
+							sp.setPhone_number(t.select("phone").text());
+						} else if(!t.select("office").text().equals("")){
+                            sp.setOffice(t.select("office").text());
+                        } else if(t.text().equals("Mail")){
+                            sp.setEmail_url(t.select("a[href]").attr("href"));
+                        } else if(t.text().equals("Bio")){
+                            sp.setHomepage_url(t.select("a[href]").attr("href"));
+                        }
+                        i++;
+                    }
+                    Document doc2 = Jsoup.connect(sp.getHomepage_url()).get();
+                    Elements target = doc2.select("img");
+                    if(target.size() == 3){
+                        sp.setImg_url(target.get(2).attr("src"));
+                        System.out.println(sp.getImg_url());
+                    }
+                    sp.save();
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

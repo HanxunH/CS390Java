@@ -18,12 +18,11 @@
         <servlet-name>SearchEngineServlet</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
-
-
     <listener>
         <listener-class>
             org.springframework.web.context.ContextLoaderListener
         </listener-class>
     </listener>
+
 
 </web-app>

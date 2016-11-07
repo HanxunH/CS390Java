@@ -36,4 +36,23 @@
     </class>
 
 
+    <class name="cs390.Crawler.searchPeople" table="search_people">
+        <meta attribute="class-description">
+            This class contains the searchURL detail.
+        </meta>
+        <id name="people_id" type="int" column="people_id">
+            <generator class="increment"></generator>
+        </id>
+        <property name="firstName" column="firstName" type="java.lang.String"/>
+        <property name="LastName" column="LastName" type="java.lang.String"/>
+        <property name="position" column="position" type="java.lang.String"/>
+        <property name="img_url" column="img_url" type="java.lang.String"/>
+        <property name="homepage_url" column="homepage_url" type="java.lang.String"/>
+        <property name="email_url" column="email_url" type="java.lang.String"/>
+        <property name="phone_number" column="phone_number" type="java.lang.String"/>
+        <property name="office" column="office" type="java.lang.String"/>
+
+    </class>
+
+
 </hibernate-mapping>
