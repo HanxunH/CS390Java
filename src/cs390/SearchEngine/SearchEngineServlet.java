@@ -19,7 +19,7 @@ public class SearchEngineServlet extends javax.servlet.http.HttpServlet {
 
         request.getSession().setAttribute("keyword", searchWord);
         request.setAttribute("result_list", se.searchEngineResult); // add to request
-
+        request.setAttribute("sp_list", se.seList); // add to request
         request.getRequestDispatcher("search.jsp").forward(request,response);
     }
 

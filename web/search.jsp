@@ -9,6 +9,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="cs390.Crawler.searchResult" %>
+<%@ page import="cs390.Crawler.searchPeople" %>
 <%@ page import="java.util.*" %>
 
 <!DOCTYPE html>
@@ -92,6 +93,33 @@
     <%
         // retrieve your list from the request, with casting
         List<searchResult> rs = (List<searchResult>)request.getAttribute("result_list");
+        List<searchPeople> sp = (List<searchPeople>)request.getAttribute("sp_list");
+        if(sp != null && sp.size() != 0) {
+            for (searchPeople s : sp) {
+                out.print("    <div class=\"row\">\n" +
+                        "        <div class=\"col-md-7\">\n" +
+                        "            <a href=\" ");
+                out.print(s.getHomepage_url());
+                out.print("\">");
+                out.println("<img class=\"img-responsive\" src=\"" + s.getImg_url() + "\" alt=\"\" height=\"350\" width=\"150\">");
+                out.println("            </a>\n" +
+                        "        </div>\n" +
+                        "        <div class=\"col-md-5\">");
+                out.println("<h3>" + s.getFirstName() + " " + s.getLastName() + "</h3>");
+                out.println("<h4>" + s.getPosition() + "</h4>");
+                out.println("<h5>" + s.getPhone_number() + "</h5>");
+                out.println("<h5>" + s.getOffice() + "</h5>");
+                out.println("<a href=\">" + s.getEmail_url() + "\">" + "Mail" + "</a>");
+                out.println("<br/>");
+                out.println("<a href=\">" + s.getHomepage_url() + "\">" + "Bio" + "</a>");
+                out.println("        </div>\n" +
+                        "    </div>\n" +
+                        "    <!-- /.row -->\n" +
+                        "\n" +
+                        "    <hr>");
+            }
+        }
+
         if(rs != null && rs.size() !=0 ){
             for(searchResult r : rs){
 

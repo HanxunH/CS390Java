@@ -132,9 +132,9 @@ public class Crawler {
         while(currentImageID < getUrlIDfromDB()){
             synchronized(this) {
                 readParam();
+                crawlForImage();
                 saveParam(currentImageID+1,"currentImageID");
             }
-            crawlForImage();
         }
     }
 
@@ -151,10 +151,12 @@ public class Crawler {
 
 
     public void startUpdateContent(){
-        while(currentUpdateContentID < 2753){
+        while(currentUpdateContentID < getContentUrlIDfromDB()){
+            synchronized(this) {
+                readParam();
+                saveParam(currentUpdateContentID+1,"currentUpdateContentID");
+            }
             updateSearchResult();
-            currentUpdateContentID = currentUpdateContentID + 1;
-            saveParam(currentUpdateContentID,"currentUpdateContentID");
         }
     }
 
@@ -187,10 +189,11 @@ public class Crawler {
             try{
                 Document document = Jsoup.connect(target.getURL()).get();
                 Elements img = document.getElementsByTag("img");
-                if(img.size()>0 && img.get(0).hasAttr("alt")){
+                if(img.size()>0){
                     target.setImage_url(img.get(0).absUrl("src"));
                     if(logger.isInfoEnabled()){
-                        logger.info("Image saved for URLID: " + currentTitleID + " URL: "+ target.getURL());
+                        logger.info("Image saved for URLID: " + currentImageID + " URL: "+ target.getURL());
+                        logger.info(target.getImage_url());
                     }
                     target.save();
                 }
@@ -491,5 +494,7 @@ public class Crawler {
         }catch(Exception e){
             e.printStackTrace();
         }
+
+
     }
 }

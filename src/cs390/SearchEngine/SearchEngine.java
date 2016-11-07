@@ -16,6 +16,7 @@ import java.util.*;
 public class SearchEngine {
     private String searchKeyword;
     public List<searchResult> searchEngineResult;
+    public List<searchPeople> seList;
 
     final static Logger logger = Logger.getLogger(SearchEngine.class);
 
@@ -33,7 +34,8 @@ public class SearchEngine {
         Scanner scanner = new Scanner(searchKeyword).useDelimiter("\\s* \\s*");
         while(scanner.hasNext()) {
             Query q = session.createQuery("FROM searchResult AS rs Left JOIN rs.hm_result WHERE word = :keyword order by word_count DESC");
-            q.setParameter("keyword",scanner.next());
+            String temp = scanner.next();
+            q.setParameter("keyword",temp);
             try{
                 List<searchResult> temp_rs_list = q.list();
                 if(i==0){
@@ -44,6 +46,16 @@ public class SearchEngine {
                     searchEngineResult = temp_rs_list2;
                 }
                 i++;
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+
+            q = session.createQuery("FROM searchPeople WHERE firstName = :keyword1 OR LastName = :keyword2");
+            q.setParameter("keyword1",temp);
+            q.setParameter("keyword2",temp);
+            try{
+                seList = q.list();
             }catch (Exception e){
                 e.printStackTrace();
             }
