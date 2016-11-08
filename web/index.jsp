@@ -35,7 +35,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 <!-- Signup Form -->
 <form id="search-form" method="post" action="search">
-  <input type="email" name="searchWord" id="email" placeholder="" />
+  <input type="text" name="searchWord" id="email" placeholder="" />
   <input type="submit" value="Search" />
 </form>
 

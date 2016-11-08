@@ -53,7 +53,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../">CS390Java Project</a>
+            <a class="navbar-brand" href="/index.jsp">CS390Java Project</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -101,17 +101,26 @@
                         "            <a href=\" ");
                 out.print(s.getHomepage_url());
                 out.print("\">");
-                out.println("<img class=\"img-responsive\" src=\"" + s.getImg_url() + "\" alt=\"\" height=\"350\" width=\"150\">");
+                out.println("<img class=\"img-responsive\" src=\"");
+                if(s.getImg_url()!=null){
+                    out.println(s.getImg_url());
+                }
+                out.println("\" alt=\"\" height=\"350\" width=\"150\">");
                 out.println("            </a>\n" +
                         "        </div>\n" +
                         "        <div class=\"col-md-5\">");
                 out.println("<h3>" + s.getFirstName() + " " + s.getLastName() + "</h3>");
                 out.println("<h4>" + s.getPosition() + "</h4>");
-                out.println("<h5>" + s.getPhone_number() + "</h5>");
-                out.println("<h5>" + s.getOffice() + "</h5>");
-                out.println("<a href=\">" + s.getEmail_url() + "\">" + "Mail" + "</a>");
+                if(s.getPhone_number()!=null){
+                    out.println("<h5>" + s.getPhone_number() + "</h5>");
+
+                }
+                if(s.getOffice()!=null){
+                    out.println("<h5>" + s.getOffice() + "</h5>");
+                }
+                out.println("<a href=\"" + s.getEmail_url() + "\">" + "Mail" + "</a>");
                 out.println("<br/>");
-                out.println("<a href=\">" + s.getHomepage_url() + "\">" + "Bio" + "</a>");
+                out.println("<a href=\"" + s.getHomepage_url() + "\">" + "Bio" + "</a>");
                 out.println("        </div>\n" +
                         "    </div>\n" +
                         "    <!-- /.row -->\n" +
@@ -135,9 +144,9 @@
                         "        </div>\n" +
                         "        <div class=\"col-md-5\">");
 
-                out.println("<h3>" + r.getTitle() +"</h3>");
+                out.println("<h3>" + r.getTitle().replace(":"," ") +"</h3>");
                 out.println("<h4>" + r.getUrl() +"</h4>");
-                out.println("<p>" + r.getDescription() +"</p>");
+                out.println("<p>" + r.getDescription().replace(":"," ") +"</p>");
 
 
                 out.println("<a class=\"btn btn-primary\" href=\"" + r.getUrl() + "\">Go to This Page <span class=\"glyphicon glyphicon-chevron-right\"></span></a>");

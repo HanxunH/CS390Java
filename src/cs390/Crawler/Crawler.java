@@ -142,10 +142,9 @@ public class Crawler {
         while(currentTitleID < getUrlIDfromDB()){
             synchronized(this) {
                 readParam();
+                crawlForTitle();
                 saveParam(currentTitleID+1,"currentTitleID");
             }
-            crawlForTitle();
-
         }
     }
 
@@ -327,6 +326,9 @@ public class Crawler {
         searchURL temp = new searchURL();
         try {
             temp =  (searchURL) session.get(searchURL.class, id);
+            if(temp == null){
+                return new searchURL();
+            }
             temp.set = true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -463,7 +465,7 @@ public class Crawler {
                     }
                     int i = 0;
                     for(Element t : tds){
-						System.out.print(t.text()+ " ");
+						//System.out.print(t.text()+ " ");
                         if(i == 0){
                             String name = tds.get(i).text();
                             Scanner scanner = new Scanner(name).useDelimiter("\\s* \\s*");

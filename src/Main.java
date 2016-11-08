@@ -8,9 +8,6 @@ public class Main {
     public static void main(final String[] args) throws Exception {
         c = new Crawler("http://cs.purdue.edu","purdue.edu");
         c.setMaxurls(20000);
-        //c.crawlForPeople();
-
-
 
         crawlerRunnable myRunnable2 = new crawlerRunnable(c);
         myRunnable2.setMode(2);
@@ -20,6 +17,13 @@ public class Main {
             ta[i].start();
         }
 
+        crawlerRunnable myRunnable3 = new crawlerRunnable(c);
+        myRunnable3.setMode(3);
+        Thread[] tb = new Thread[3];
+        for(int i=0;i<3;i++){
+            tb[i] = new Thread(myRunnable3);
+            //tb[i].start();
+        }
         /*crawlerRunnable myRunnable = new crawlerRunnable(c);
         myRunnable.setMode(0);
         Thread t = new Thread(myRunnable);
